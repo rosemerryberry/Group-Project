@@ -3,7 +3,7 @@ A group project.
 
 ###WORK DAMN YOU
 
-I love free food <3
+Dark Chocolate is all of our favorites.
 
 Hush now, it will all be okay. All of that noise can be gone. 
 
