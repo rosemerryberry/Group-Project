@@ -12,7 +12,7 @@ CrimeMap <- function(crime, choiceYear){
   crime <- paste0(crime, ".rate")
   
   # Load some of that data and cut out the crap
-  crimeData <- read.csv("./data/CrimeStatebyState.csv") %>% filter(Year == choiceYear, State != "Total")
+  crimeData <- read.csv("./data/CrimeData.csv") %>% filter(Year == choiceYear, State != "Total")
   
   # Find the column number my data lives at and give it a name I can grab at later. 
   Locate <- match(crime, colnames(crimeData))

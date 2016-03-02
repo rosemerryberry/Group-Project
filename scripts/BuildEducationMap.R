@@ -1,22 +1,20 @@
 #Rosemary Adams
 #Last Edit: 03.01.2016
 #Creating single choropleth map of 2010 education data
-<<<<<<< HEAD:scripts/BuildEducationMap.R
+HEAD:scripts/BuildEducationMap.R
 # install.packages("plotly")
 require(plotly)
 require(dplyr)
 
-df <- read.csv("./data/complete_education_data.csv")
-=======
+df <- read.csv("./data/EducationData.csv")
 
 #year options: even years between 1992 and 2010, formatted like "x2010" or "x1996"
->>>>>>> 41ca8dcde4e6101926d2ba7cfc4c641cdba3eafb:education_map.R
 
-build_education_map <- function(year) {
+EducationMap <- function(year) {
   require(plotly)
   require(dplyr)
 
-  df <- read.csv("./complete_education_data.csv")
+  df <- read.csv("./data/EducationData.csv")
 
   #give state boundaries a white border
   l <- list(color = toRGB("white"), width = 2)
