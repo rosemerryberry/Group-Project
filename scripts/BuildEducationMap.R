@@ -1,11 +1,11 @@
 #Rosemary Adams
 #Last Edit: 02.25.2016
 #Creating single choropleth map of 2010 education data
-install.packages("plotly")
+# install.packages("plotly")
 require(plotly)
 require(dplyr)
 
-df <- read.csv("./complete_education_data.csv")
+df <- read.csv("./data/complete_education_data.csv")
 
 #give state boundaries a white border
 l <- list(color = toRGB("white"), width = 2)
