@@ -32,7 +32,7 @@ EducationMap <- function(year_input) {
   
   plot_ly(df, z = df[,year], locations = code, type = 'choropleth', 
           locationmode = 'USA-states', color = df[,year], colors = 'Purples',
-          marker = list(line = l), colorbar = list(title = "Percent of College Attendance")) %>%
+          marker = list(line = l), colorbar = list(title = " % College Attendance")) %>%
     layout(title = 'Percent of High School Graduates who Attend College', geo = g)
 }
 

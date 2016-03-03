@@ -28,16 +28,21 @@ CrimeMap <- function(crime, choiceYear){
   borders <- list(color = toRGB("black"), width = 2)
   gradientColor <- "Purples"
   
+  #give state boundaries a white border
+  l <- list(color = toRGB("white"), width = 2)
+  
   # Simple American Geography options
   g <- list(
     scope = 'usa',
-    projection = list(type = 'albers usa')
+    projection = list(type = 'albers usa'),
+    showlakes = TRUE,
+    lakecolor = toRGB("white")
   )
   
   # Now lets build this
   plot_ly(crimeData, z = crimeData[,Locate], text = hover, locations = Code, type = "choropleth", 
           locationmode = 'USA-states', color = crimeData[,Locate], colors = "Reds", 
-          marker = list(line = borders), colorbar = list(title = "Per Capita")) %>% 
+          marker = list(line = l), colorbar = list(title = "Per Capita")) %>% 
     layout(title = "United State Department of Justice Crime Data", geo = g) %>% 
     return()
 }

@@ -29,7 +29,7 @@ IncomeMap <- function(year_input) {
   
   plot_ly(income, z = income[,year], locations = code, type = 'choropleth', 
           locationmode = 'USA-states', color = income[,year], colors = "Greens",
-          colorbar = list(tickprefix = "$", title = "Average Household Income"), 
+          colorbar = list(tickprefix = "$", title = "Income"), 
           marker = list(line = l)) %>%
-    layout(title = 'Average Household Income', geo = g)
+    layout(title = 'Median Household Income', geo = g)
 }
