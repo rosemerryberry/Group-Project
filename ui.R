@@ -22,24 +22,25 @@ shinyUI(navbarPage(
       sidebarPanel(
         
         # Build drop-down menu of all years the user can use
-        selectInput(
-          "crimeYear",
-          label = h3("Choose Year"),
-          choices = list(
-            "1992" = '1992',
-            "1994" = '1994',
-            "1996" = '1996',
-            "1998" = '1998',
-            "2000" = '2000',
-            "2002" = '2002',
-            "2004" = '2004',
-            "2008" = '2008',
-            "2010" = '2010',
-            "2012" = '2012'
-          ),
-          selected = '1992'
-        ),
-        
+        #selectInput(
+         # "crimeYear",
+          #label = h3("Choose Year"),
+          #choices = list(
+           # "1992" = '1992',
+            #"1994" = '1994',
+            #"1996" = '1996',
+            #"1998" = '1998',
+            #"2000" = '2000',
+            #"2002" = '2002',
+            #"2004" = '2004',
+            #"2008" = '2008',
+            #"2010" = '2010',
+            #"2012" = '2012'
+          #),
+          #selected = '1992'
+        #),
+        sliderInput("crimeYear", label = h3("Choose Year"), min = 1992, 
+                    max = 2012, value = 2000, sep = "", step = 2),
         # sliderInput(
         #   "crimeYear",
         #   "Choose year",
