@@ -7,7 +7,11 @@ crimeData <- read.csv('./data/CrimeData.csv')
 educationData <- read.csv('./data/EducationData.csv')
 
 # Begin Shiny UI
-shinyUI(navbarPage(
+shinyUI(navbarPage(theme = 'bootstrap.css',
+  
+  # style the UI with the styler sheet
+  includeCSS('www/styler.css'),
+  
   'Crime, Education, and Socio-Economic Data',
   
   # create tabs for different data sets
@@ -15,7 +19,22 @@ shinyUI(navbarPage(
   # crime tab
   tabPanel(
     'Crime',
-    titlePanel('Crime Map'),
+    
+    # give intro to user
+    tags$p(
+      tags$div(
+        id = 'CrimeMapIntroBox',
+        tags$div(
+          id = 'GlobalMapIntro',
+          "This is a Crime Map description placeholder! This is now just some random text to the
+          automatic box sizing. It looks like it is working as intended."
+        )
+      )
+    ),
+    
+    titlePanel(tags$div(id = "CrimeMapHeader",
+                        checked = NA,
+                        'Crime Map')),
     
     # Create a sidebar for controls
     sidebarLayout(
@@ -45,7 +64,22 @@ shinyUI(navbarPage(
   
   # education tab
   tabPanel('Education',
-           titlePanel('Education Map'),
+           
+           # give intro to user
+           tags$p(
+             tags$div(
+               id = 'EducationMapIntroBox',
+               tags$div(
+                 id = 'GlobalMapIntro',
+                 "This is an Education Map description placeholder! This is now just some random text to the
+                  automatic box sizing. It looks like it is working as intended."
+               )
+              )
+            ),
+           
+           titlePanel(tags$div(id = "EducationMapHeader", 
+                                 'Education Map')),
+           
            # Create sidebar layout
            sidebarLayout(
              
@@ -63,7 +97,22 @@ shinyUI(navbarPage(
   
   # incomse tab
   tabPanel('Income',
-           titlePanel('Income Map'),
+           
+           # give intro to user
+           tags$p(
+             tags$div(
+               id = 'IncomeMapIntroBox',
+               tags$div(
+                 id = 'GlobalMapIntro',
+                 "This is an Income Map description placeholder! This is now just some random text to the
+                  automatic box sizing. It looks like it is working as intended."
+               )
+              )
+            ),
+           
+           titlePanel(tags$div(id = "IncomeMapHeader",
+                                 'Income Map')),
+           
            # Create sidebar layout
            sidebarLayout(
              

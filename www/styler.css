@@ -1,0 +1,69 @@
+@charset "utf-8";
+/* Report Styler */
+
+@import url("https://fonts.googleapis.com/css?family=Open+Sans:400,300,300italic,600,400italic,600italic,800,700italic,700,800italic");
+
+h1 {
+	font-family: Arial, Helvetica, sans-serif;
+	font-weight: 500;
+	color: #ad1d28;
+}
+
+#CrimeMapHeader {
+	font-family: Arial, Helvetica, sans-serif;
+	font-weight: 500;
+	color: #ad1d28;
+}
+
+#GlobalMapIntro {
+	font-family: "Open Sans", sans-serif;
+	font-weight: 500;
+	text-align: center;
+	font-size: 24px;
+	color: #666;
+}
+
+#CrimeMapIntroBox {
+    width: auto;
+    padding: 15px;
+    border: 5px;
+	border-style: solid;
+	border-color: #ad1d28;
+	background-color: #EBEBEB;
+	margin-left: 100px;
+	margin-right: 100px;
+}
+
+#EducationMapHeader {
+	font-family: Arial, Helvetica, sans-serif;
+	font-weight: 500;
+	color: #371177;
+}
+
+#EducationMapIntroBox {
+    width: auto;
+    padding: 15px;
+    border: 5px;
+	border-style: solid;
+	border-color: #371177;
+	background-color: #EBEBEB;
+	margin-left: 100px;
+	margin-right: 100px;
+}
+
+#IncomeMapHeader {
+	font-family: Arial, Helvetica, sans-serif;
+	font-weight: 500;
+	color: #1C7729;
+}
+
+#IncomeMapIntroBox {
+    width: auto;
+    padding: 15px;
+    border: 5px;
+	border-style: solid;
+	border-color: #1C7729;
+	background-color: #EBEBEB;
+	margin-left: 100px;
+	margin-right: 100px;
+}
