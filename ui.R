@@ -21,35 +21,9 @@ shinyUI(navbarPage(
     sidebarLayout(
       sidebarPanel(
         
-        # Build drop-down menu of all years the user can use
-        #selectInput(
-         # "crimeYear",
-          #label = h3("Choose Year"),
-          #choices = list(
-           # "1992" = '1992',
-            #"1994" = '1994',
-            #"1996" = '1996',
-            #"1998" = '1998',
-            #"2000" = '2000',
-            #"2002" = '2002',
-            #"2004" = '2004',
-            #"2008" = '2008',
-            #"2010" = '2010',
-            #"2012" = '2012'
-          #),
-          #selected = '1992'
-        #),
+        # build slider to control year
         sliderInput("crimeYear", label = h3("Choose Year"), min = 1992, 
-                    max = 2012, value = 2000, sep = "", step = 2),
-        # sliderInput(
-        #   "crimeYear",
-        #   "Choose year",
-        #   min = 1992,
-        #   max = 2012,
-        #   value = 1992,
-        #   sep = "",
-        #   step = 2
-        # ),
+                    max = 2010, value = 2000, sep = "", step = 2),
         
         # build input for crime type
         selectInput(
@@ -63,12 +37,11 @@ shinyUI(navbarPage(
             'Motor Vehicle Theft' = 'Motor.vehicle.theft'
           )
         )
-        
-      ),
-      
+   ),
       # Render the crime map
       mainPanel(plotlyOutput('crimeMap')))
-  ),
+   ),
+
   
   # education tab
   tabPanel('Education',
@@ -79,30 +52,14 @@ shinyUI(navbarPage(
              # Create a sidebar for controls
              sidebarPanel(
                
-               # Build drop-down for all the years the user can use
-               selectInput(
-                 "eduYear",
-                 label = h3("Choose Year"),
-                 choices = list(
-                   "1992" = '1992',
-                   "1994" = '1994',
-                   "1996" = '1996',
-                   "1998" = '1998',
-                   "2000" = '2000',
-                   "2002" = '2002',
-                   "2004" = '2004',
-                   "2008" = '2008',
-                   "2010" = '2010',
-                   "2012" = '2012'
-                 ),
-                 selected = '1992'
-              )
-             ),
+               # build slider to control year
+                sliderInput("eduYear", label = h3("Choose Year"), min = 1992, 
+                            max = 2010, value = 2000, sep = "", step = 2)
+              ),
              
              # render the education map
-             mainPanel(plotlyOutput('eduMap'))
-           )
-        ),
+             mainPanel(plotlyOutput('eduMap')))
+           ),
   
   # incomse tab
   tabPanel('Income',
@@ -113,29 +70,13 @@ shinyUI(navbarPage(
              # Create a sidebar for controls
              sidebarPanel(
                
-               # Build drop-down for all the years the user can use
-               selectInput(
-                 "incYear",
-                 label = h3("Choose Year"),
-                 choices = list(
-                   "1992" = '1992',
-                   "1994" = '1994',
-                   "1996" = '1996',
-                   "1998" = '1998',
-                   "2000" = '2000',
-                   "2002" = '2002',
-                   "2004" = '2004',
-                   "2008" = '2008',
-                   "2010" = '2010',
-                   "2012" = '2012'
-                 ),
-                 selected = '1992'
-               )
+               # Build slider to control year
+                sliderInput("incYear", label = h3("Choose Year"), min = 1992, 
+                            max = 2010, value = 2000, sep = "", step = 2)
              ),
              
              # render the education map
-             mainPanel(plotlyOutput('incMap'))
-           )
-  )
-)
-)
+             mainPanel(plotlyOutput('incMap')))
+         )
+      )
+   )
