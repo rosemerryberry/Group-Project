@@ -7,15 +7,15 @@
 IncomeMap <- function(year_input) {
   require(dplyr)
   require(plotly)
+  require(RColorBrewer)
+
   #reads in the data
-  income <- read.csv("./data/IncomeData.csv")
-  #every time I do this it adds a column at the front of row numbers so I take that out
-  income <- income[, 2:13]
+  income <- read.csv("./data/IncomeRebuild.csv")
   
-  year <- paste0("X", year_input)
+  year <- paste0("x", year_input)
   
   #test value
-  year <- "X2010"
+  #year <- "x2010"
   
   #give state boundaries a white border
   l <- list(color = toRGB("white"), width = 2)
@@ -32,7 +32,4 @@ IncomeMap <- function(year_input) {
           colorbar = list(tickprefix = "$", title = "Average Household Income"), 
           marker = list(line = l)) %>%
     layout(title = 'Average Household Income', geo = g)
-  
-  plot_ly(income, z = income[,year], locations = code, type = 'choropleth', locationmode = "USA-states") %>%
-    layout(geo = g)
 }
