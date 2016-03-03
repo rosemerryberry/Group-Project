@@ -1,7 +1,6 @@
 #Rosemary Adams
 #Last Edit: 03.01.2016
 #Creating single choropleth map of 2010 education data
-HEAD:scripts/BuildEducationMap.R
 # install.packages("plotly")
 require(plotly)
 require(dplyr)
