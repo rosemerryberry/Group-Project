@@ -11,6 +11,8 @@ shinyUI(navbarPage(
   'Crime, Education, and Socio-Economic Data',
   
   # create tabs for different data sets
+  
+  # crime tab
   tabPanel(
     'Crime',
     titlePanel('Crime Map'),
@@ -57,6 +59,7 @@ shinyUI(navbarPage(
       mainPanel(plotlyOutput('crimeMap')))
   ),
   
+  # education tab
   tabPanel('Education',
            titlePanel('Education Map'),
            # Create sidebar layout
@@ -88,6 +91,39 @@ shinyUI(navbarPage(
              # render the education map
              mainPanel(plotlyOutput('eduMap'))
            )
-          )
+        ),
+  
+  # incomse tab
+  tabPanel('Income',
+           titlePanel('Income Map'),
+           # Create sidebar layout
+           sidebarLayout(
+             
+             # Create a sidebar for controls
+             sidebarPanel(
+               
+               # Build drop-down for all the years the user can use
+               selectInput(
+                 "incYear",
+                 label = h3("Choose Year"),
+                 choices = list(
+                   "1992" = 'x1992',
+                   "1994" = 'x1994',
+                   "1996" = 'x1996',
+                   "1998" = 'x1998',
+                   "2000" = 'x2000',
+                   "2002" = 'x2002',
+                   "2004" = 'x2004',
+                   "2008" = 'x2008',
+                   "2010" = 'x2010'
+                 ),
+                 selected = 'x1992'
+               )
+             ),
+             
+             # render the education map
+             mainPanel(plotlyOutput('incMap'))
+        )
       )
+    )
   )

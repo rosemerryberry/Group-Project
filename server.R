@@ -3,12 +3,10 @@ library(plotly)
 library(shiny)
 library(dplyr)
 
-# Get needed scripts and data
+# import needed scripts
 source('./scripts/BuildCrimeMap.R')
 source('./scripts/BuildEducationMap.R')
-
-crimeData <- read.csv('./data/CrimeData.csv')
-educationData <- read.csv('./data/EducationData.csv')
+source('./scripts/BuildIncomeMap.R')
 
 # Begin Shiny Server
 shinyServer(function(input, output) {
@@ -21,5 +19,10 @@ shinyServer(function(input, output) {
   # Output the education data
   output$eduMap <- renderPlotly({
     EducationMap(input$eduYear)
+  })
+  
+  # Output the income data
+  output$incMap <- renderPlotly({
+    IncomeMap(input$incYear)
   })
 })

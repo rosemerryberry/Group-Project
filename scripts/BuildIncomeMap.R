@@ -4,7 +4,7 @@
 
 #parameter year needs to be formatted like "X2010" or "X1992"
 
-build_plot <- function(year) {
+IncomeMap <- function(year) {
   require(dplyr)
   require(plotly)
   #reads in the data
