@@ -40,6 +40,16 @@ shinyUI(navbarPage(
           selected = '1992'
         ),
         
+        # sliderInput(
+        #   "crimeYear",
+        #   "Choose year",
+        #   min = 1992,
+        #   max = 2012,
+        #   value = 1992,
+        #   sep = "",
+        #   step = 2
+        # ),
+        
         # build input for crime type
         selectInput(
           'crimeType', label = h3("Choose Crime Type"), 
@@ -107,23 +117,23 @@ shinyUI(navbarPage(
                  "incYear",
                  label = h3("Choose Year"),
                  choices = list(
-                   "1992" = '1992',
-                   "1994" = '1994',
-                   "1996" = '1996',
-                   "1998" = '1998',
-                   "2000" = '2000',
-                   "2002" = '2002',
-                   "2004" = '2004',
-                   "2008" = '2008',
-                   "2010" = '2010'
+                   "1992" = 'x1992',
+                   "1994" = 'x1994',
+                   "1996" = 'x1996',
+                   "1998" = 'x1998',
+                   "2000" = 'x2000',
+                   "2002" = 'x2002',
+                   "2004" = 'x2004',
+                   "2008" = 'x2008',
+                   "2010" = 'x2010'
                  ),
-                 selected = '1992'
+                 selected = 'x1992'
                )
              ),
              
              # render the education map
              mainPanel(plotlyOutput('incMap'))
-        )
-      )
-    )
+           )
   )
+)
+)
