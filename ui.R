@@ -54,12 +54,12 @@ shinyUI(navbarPage(
          sidebarPanel(
             
             # build slider to control year
-            sliderInput("crimeYear", label = h3("Choose Year"), min = 1992, 
+            sliderInput("crimeYear", label = h3("Year"), min = 1992, 
                         max = 2010, value = 2000, sep = "", step = 2),
             
             # build input for crime type
             selectInput(
-               'crimeType', label = h3("Choose Crime Type"), 
+               'crimeType', label = h3("Crime Type"), 
                choices = list(
                   'Rape' = 'Forcible.rape',
                   'Robbery' = 'Robbery',
@@ -106,7 +106,7 @@ shinyUI(navbarPage(
          sidebarPanel(
             
             # build slider to control year
-            sliderInput("eduYear", label = h3("Choose Year"), min = 1992, 
+            sliderInput("eduYear", label = h3("Year"), min = 1992, 
                         max = 2010, value = 2000, sep = "", step = 2)
          ),
          
@@ -145,7 +145,7 @@ shinyUI(navbarPage(
          sidebarPanel(
             
             # Build slider to control year
-            sliderInput("incYear", label = h3("Choose Year"), min = 1992, 
+            sliderInput("incYear", label = h3("Year"), min = 1992, 
                         max = 2010, value = 2000, sep = "", step = 2)
          ),
          

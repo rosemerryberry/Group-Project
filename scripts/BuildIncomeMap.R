@@ -10,7 +10,7 @@ IncomeMap <- function(year_input) {
   require(RColorBrewer)
 
   #reads in the data
-  income <- read.csv("./data/IncomeRebuild.csv")
+  income <- read.csv("./data/IncomeData.csv")
   
   year <- paste0("x", year_input)
   
