@@ -31,6 +31,57 @@ h1 {
 	color: #666;
 }
 
+/* ===== GENRAL PROPERTIES ===== */
+
+#homeBGImage {
+  height: 1033px;
+  display: block;
+  position: relative;
+}
+
+#homeBGImage::after {
+  content: "";
+  background: url(imgs/uwlogo.png);
+  opacity: 0.5;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  right: 0;
+  position: absolute;
+  z-index: -1;
+}
+
+#homePageTitle {
+	text-align: center;
+	font-weight: bold;
+	font-size: 40px;
+	opacity: 1.0 !important;
+}
+
+#contributorReportBox {
+	width: auto;
+	padding: 15px;
+	border: 5px;
+	border-style: solid;
+	border-color: #353436
+	-webkit-border-radius: 25px;
+	border-radius: 25px;
+	background-color: #EBEBEB;
+	margin-left: 100px;
+	margin-right: 100px;
+	margin-top: 50px;
+}
+
+#contributorReportHeader {
+	font-size: 35px;
+	font-weight: bold;
+}
+
+#contributorReportContent {
+	font-size: 20px;
+	font-style: italic;
+}
+
 /* ===== MAP PROPERTIES ===== */
 
 #CrimeMapHeader {
