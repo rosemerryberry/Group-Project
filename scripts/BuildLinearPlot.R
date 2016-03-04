@@ -23,9 +23,13 @@ construct_linear <- function(data) {
   edu_data <- edu[51, 3:12]
   edu2 <- as.numeric(as.vector(edu_data[1,]))
 
-  income1 <- c(mean(income$x2010), mean(income$x2012))
+  income1 <- c(mean(income$x1992), mean(income$x1994),
+               mean(income$x1996), mean(income$x1998), 
+               mean(income$x2000), mean(income$x2002), 
+               mean(income$x2004), mean(income$x2006), 
+               mean(income$x2008), mean(income$x2010))
 
   p <- plot_ly(crime_formatted, x = Year, y = mean, name = "Average Violent Crime Rates in the US")
-       p %>% add_trace(y = edu2)
+       p %>% add_trace(y = edu2) %>% add_trace(y = income1)
      
 }
