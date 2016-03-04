@@ -6,8 +6,8 @@
 PredictEducation <- function(yearChoice = "2012"){
   library(rpart)
   library(dplyr)
-  #library(rattle)
-  #library(rpart.plot)
+  library(rattle)
+  library(rpart.plot)
   # Set up all of the strings we will use to call data in both Training Data and Prediciton Data in future 
   yearChoiceX <- paste0("x", yearChoice)
   TwoBack <- as.character(as.numeric(yearChoice) - 2)
@@ -57,13 +57,17 @@ PredictEducation <- function(yearChoice = "2012"){
   FourYearEducation <- FourYearEducation/2
   
   # Now lets assemble all of that into a Training Data set that we can later feed into rpart
-  TrainingData <- data.frame(incomeData$code, TwoBackIncome, TwoBackCrime, TwoBackEducation, FourYearIncome, FourYearCrime, FourYearEducation)
+  TrainingData <- data.frame(incomeData$code, TwoBackIncome, TwoBackCrime, FourYearIncome, FourYearCrime, FourYearEducation, TwoBackEducation)
+  colnames(TrainingData) <- c("Code", "Income", "Crime", "dIncomedt", "dCrimedt", "dEducationdt", "Answers")
   # Now lets build that sexy sexy tree
-  TreeofKnowledge <- rpart(TwoBackEducation ~ TwoBackIncome + TwoBackCrime + FourYearIncome + FourYearCrime + FourYearEducation, data = TrainingData, method = 'anova', control = rpart.control(minsplit = 12, minbucket = 4, cp = 0.001))
+  TreeofKnowledge <- rpart(Answers ~ Income + Crime + dIncomedt + dCrimedt + dEducationdt, data = TrainingData, method = 'anova', control = rpart.control(minsplit = 12, minbucket = 4, cp = 0.001))
   
   # Dope, now we have a tree, merry christmas.
   # Let's give it a graph, we can send that back to the application to be displayed for the amusement of our audience
-  #BreadandCircuses <- fancyRpartPlot(TreeofKnowledge, sub='')
+  BreadandCircuses <- fancyRpartPlot(TreeofKnowledge, 
+                                     main = 'Predictive Tree for State Education Scores', 
+                                     sub='minsplit = 12, minbucket = 4, cp = 0.001',
+                                     palettes = c("Blues", "Reds"))
   
   # Now we have a tree and we can make a prediction, let's use the same method we used to build our Training Set to build 
   # a Test Set of data.
@@ -97,6 +101,7 @@ PredictEducation <- function(yearChoice = "2012"){
   
   # And lets compile that into a test set for our new tree
   TestData <- data.frame(CurrentIncome, CurrentCrime, DeriveYearIncome, DeriveYearCrime, DeriveYearEducation)
+  colnames(TestData) <- c("Income","Crime","dIncomedt", "dCrimedt", "dEducationdt")
   
   # Who knew we even knew it?
   TheFuture <- predict(TreeofKnowledge, TestData)
@@ -107,7 +112,7 @@ PredictEducation <- function(yearChoice = "2012"){
   # A tree for posterity
   returnSet$tree <- TreeofKnowledge
   # A graph for the awe
-  #returnSet$graphic <- BreadandCircuses
+  returnSet$graphic <- BreadandCircuses
   # And a prediction to make everyone look good
   returnSet$prediction <- TheFuture
   
