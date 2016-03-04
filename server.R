@@ -10,7 +10,7 @@ source('./scripts/BuildIncomeMap.R')
 
 # Begin Shiny Server
 shinyServer(function(input, output) {
-  
+   
   # Output the crime data
   output$crimeMap <- renderPlotly({ 
     CrimeMap(input$crimeType, input$crimeYear)  
