@@ -1,0 +1,115 @@
+# Keagan Moo
+# Group Project
+# 3/3/2015
+# Regression Tree WOOOOO!
+
+PredictEducation <- function(yearChoice = "2012"){
+  library(rpart)
+  library(dplyr)
+  #library(rattle)
+  #library(rpart.plot)
+  # Set up all of the strings we will use to call data in both Training Data and Prediciton Data in future 
+  yearChoiceX <- paste0("x", yearChoice)
+  TwoBack <- as.character(as.numeric(yearChoice) - 2)
+  FourBack <- as.character(as.numeric(yearChoice) - 4)
+  SixBack <- as.character(as.numeric(yearChoice) - 6)
+  TwoChoiceX <- paste0("x", TwoBack)
+  FourChoiceX <- paste0("x", FourBack)
+  SixChoiceX <- paste0("x", SixBack)
+  
+  # Import data required, we will be using the last 8 years of data from each set
+  # as features.
+  years <- c("1992", "1994", "1996", "1998", "2000", "2002", "2004", "2006", "2008", "2010", "2012")
+  crimeData <- read.csv("./data/CrimeData.csv") %>% filter(State != "Total", Year %in% years )
+  educationData <- read.csv("./data/EducationData.csv")
+  incomeData <- read.csv("./data/IncomeRebuild.csv")
+  
+  # Now let's establish the features we want to test against and training data. 
+  # First "Current Year Data"
+  TwoBackIncome <- incomeData[,TwoChoiceX]
+  TwoBackCrimeCata <- crimeData %>% filter(Year == TwoBack) %>% select(Violent.Crime.rate)
+  TwoBackCrime <- c()
+  for (i in seq(nrow(TwoBackCrimeCata))){
+    
+    TwoBackCrime[i] <- TwoBackCrimeCata[i,]
+    
+  }
+  
+  
+  # Then this will be our answer key for the training data
+  TwoBackEducation <- educationData[,TwoChoiceX]
+  
+  # Now 4 Year derivatives as another feature to give the machine an understanding of trends
+  
+  FourYearIncome <- incomeData[,TwoChoiceX] - incomeData[,SixChoiceX]
+  FourYearIncome <- FourYearIncome/4
+  FourYearCrimeCata <- crimeData %>% filter(Year %in% c(TwoBack,SixBack)) %>% select(Violent.Crime.rate) 
+  FourYearCrime <- c()
+  for (i in seq(nrow(FourYearCrimeCata))){
+    
+    FourYearCrime[(i + 1)/2] <- FourYearCrimeCata[i,] - FourYearCrimeCata[i + 1,] 
+    
+    i = i + 1
+    
+  }
+  FourYearCrime = FourYearCrime/4
+  FourYearEducation <- educationData[,FourChoiceX] - educationData[,SixChoiceX]
+  FourYearEducation <- FourYearEducation/2
+  
+  # Now lets assemble all of that into a Training Data set that we can later feed into rpart
+  TrainingData <- data.frame(incomeData$code, TwoBackIncome, TwoBackCrime, TwoBackEducation, FourYearIncome, FourYearCrime, FourYearEducation)
+  # Now lets build that sexy sexy tree
+  TreeofKnowledge <- rpart(TwoBackEducation ~ TwoBackIncome + TwoBackCrime + FourYearIncome + FourYearCrime + FourYearEducation, data = TrainingData, method = 'anova', control = rpart.control(minsplit = 12, minbucket = 4, cp = 0.001))
+  
+  # Dope, now we have a tree, merry christmas.
+  # Let's give it a graph, we can send that back to the application to be displayed for the amusement of our audience
+  #BreadandCircuses <- fancyRpartPlot(TreeofKnowledge, sub='')
+  
+  # Now we have a tree and we can make a prediction, let's use the same method we used to build our Training Set to build 
+  # a Test Set of data.
+  
+  # Current data, we won't get education this time because it is what we are predicting
+  CurrentIncome <- incomeData[,yearChoiceX]
+  CurrentCrimeCata <- crimeData %>% filter(Year == yearChoice) %>% select(Violent.Crime.rate)
+  CurrentCrime <- c()
+  for (i in seq(nrow(TwoBackCrimeCata))){
+    
+    CurrentCrime[i] <- CurrentCrimeCata[i,]
+    
+  }
+  
+  # Now 4 Year derivatives again.
+  
+  DeriveYearIncome <- incomeData[,yearChoiceX] - incomeData[,FourChoiceX]
+  DeriveYearIncome <- DeriveYearIncome/4
+  DeriveYearCrimeCata <- crimeData %>% filter(Year %in% c(yearChoice,FourBack)) %>% select(Violent.Crime.rate) 
+  DeriveYearCrime <- c()
+  for (i in seq(nrow(DeriveYearCrimeCata))){
+    
+    DeriveYearCrime[(i + 1)/2] <- DeriveYearCrimeCata[i,] - DeriveYearCrimeCata[i + 1,] 
+    
+    i = i + 1
+    
+  }
+  DeriveYearCrime = DeriveYearCrime/4
+  DeriveYearEducation <- educationData[,TwoChoiceX] - educationData[,FourChoiceX]
+  DeriveYearEducation <- DeriveYearEducation/2
+  
+  # And lets compile that into a test set for our new tree
+  TestData <- data.frame(CurrentIncome, CurrentCrime, DeriveYearIncome, DeriveYearCrime, DeriveYearEducation)
+  
+  # Who knew we even knew it?
+  TheFuture <- predict(TreeofKnowledge, TestData)
+  
+  # Now lets all plug that back into the machine shall we?
+  returnSet <- list()
+  
+  # A tree for posterity
+  returnSet$tree <- TreeofKnowledge
+  # A graph for the awe
+  #returnSet$graphic <- BreadandCircuses
+  # And a prediction to make everyone look good
+  returnSet$prediction <- TheFuture
+  
+  return(returnSet)
+}
