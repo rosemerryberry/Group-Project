@@ -67,7 +67,7 @@ PredictEducation <- function(yearChoice = "2012"){
   BreadandCircuses <- fancyRpartPlot(TreeofKnowledge, 
                                      main = 'Predictive Tree for State Education Scores', 
                                      sub='minsplit = 12, minbucket = 4, cp = 0.001',
-                                     palettes = c("Blues", "Reds"))
+                                     palettes = c("BuPu"))
   
   # Now we have a tree and we can make a prediction, let's use the same method we used to build our Training Set to build 
   # a Test Set of data.
