@@ -1,4 +1,4 @@
-Code,State,Year,Population,Violent.crime.total,Murder.and.nonnegligent.Manslaughter,Forcible.rape,Robbery,Aggravated.assault,Property.crime.total,Burglary,Larceny.theft,Motor.vehicle.theft,Violent.Crime.rate,Murder.and.nonnegligent.manslaughter.rate,Forcible.rape.rate,Robbery.rate,Aggravated.assault.rate,Property.crime.rate,Burglary.rate,Larceny-theft.rate,Motor.vehicle.theft.rate
+Code,State,Year,Population,Violent.crime.total,Murder.and.nonnegligent.manslaughter,Forcible.rape,Robbery,Aggravated.assault,Property.crime.total,Burglary,Larceny.theft,Motor.vehicle.theft,Violent.Crime.rate,Murder.and.nonnegligent.manslaughter.rate,Forcible.rape.rate,Robbery.rate,Aggravated.assault.rate,Property.crime.rate,Burglary.rate,Larceny-theft.rate,Motor.vehicle.theft.rate
 AL,Alabama,1960,3266740,6097,406,281,898,4512,33823,11626,19344,2853,186.6,12.4,8.6,27.5,138.1,1035.4,355.9,592.1,87.3
 AL,Alabama,1961,3302000,5564,427,252,630,4255,32541,11205,18801,2535,168.5,12.9,7.6,19.1,128.9,985.5,339.3,569.4,76.8
 AL,Alabama,1962,3358000,5283,316,218,754,3995,35829,11722,21306,2801,157.3,9.4,6.5,22.5,119,1067,349.1,634.5,83.4
