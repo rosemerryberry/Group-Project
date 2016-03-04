@@ -1,1 +1,0 @@
-<h3> HTML HOMEPAGE :D </h3>
