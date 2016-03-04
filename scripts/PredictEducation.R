@@ -58,9 +58,14 @@ PredictEducation <- function(yearChoice = "2012"){
   
   # Now lets assemble all of that into a Training Data set that we can later feed into rpart
   TrainingData <- data.frame(incomeData$code, TwoBackIncome, TwoBackCrime, FourYearIncome, FourYearCrime, FourYearEducation, TwoBackEducation)
-  colnames(TrainingData) <- c("Code", "Income", "Crime", "dIncomedt", "dCrimedt", "dEducationdt", "Answers")
+  colnames(TrainingData) <- c("Code", "Median_State_Income", "Violent_Crime_Rate", "Four_Year_Income_Trend", "Four_Year_Crime_Trend", "Four_Year_Education_Trend", "Answers")
   # Now lets build that sexy sexy tree
-  TreeofKnowledge <- rpart(Answers ~ Income + Crime + dIncomedt + dCrimedt + dEducationdt, data = TrainingData, method = 'anova', control = rpart.control(minsplit = 12, minbucket = 4, cp = 0.001))
+  TreeofKnowledge <- rpart(Answers ~ 
+                             Median_State_Income + 
+                             Violent_Crime_Rate + 
+                             Four_Year_Income_Trend + 
+                             Four_Year_Crime_Trend + 
+                             Four_Year_Education_Trend, data = TrainingData, method = 'anova', control = rpart.control(minsplit = 12, minbucket = 4, cp = 0.001))
   
   # Dope, now we have a tree, merry christmas.
   # Let's give it a graph, we can send that back to the application to be displayed for the amusement of our audience
@@ -101,7 +106,7 @@ PredictEducation <- function(yearChoice = "2012"){
   
   # And lets compile that into a test set for our new tree
   TestData <- data.frame(CurrentIncome, CurrentCrime, DeriveYearIncome, DeriveYearCrime, DeriveYearEducation)
-  colnames(TestData) <- c("Income","Crime","dIncomedt", "dCrimedt", "dEducationdt")
+  colnames(TestData) <- c("Median_State_Income", "Violent_Crime_Rate", "Four_Year_Income_Trend", "Four_Year_Crime_Trend", "Four_Year_Education_Trend")
   
   # Who knew we even knew it?
   TheFuture <- predict(TreeofKnowledge, TestData)
