@@ -5,7 +5,6 @@
 
 TimeAnalysis <- function(stateChoice){
   library(plotly)
-  stateChoice <- "AL"
   # State choice should be in code form but can inclued TOT for total. 
   
   # Get all years we will be doing the time analysis for. 
