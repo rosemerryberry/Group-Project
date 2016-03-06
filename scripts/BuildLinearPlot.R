@@ -1,35 +1,37 @@
 ##linear plot
 #rosemary adams
 
+#years represents the input from a double slide bar. Here is the code for the UI:
 
-construct_linear <- function(data) {
-  
+#sliderInput("linearPlot", label = h3("Slider Range"), min = 1992, 
+#            max = 2010, value = c(1996, 2006), sep = "", step = 2)
+
+#Here is the code for the server:
+
+#output$linearPlot <- renderPlotly({
+#   construct_linear(input$linearPlot)
+#})
+
+construct_linear <- function(years) {
   require(dplyr)
+  require(plotly)
+  crime <- read.csv("./data/normalCrime.csv")
+  edu <- read.csv("./data/normalEdu.csv")
+  income <- read.csv("./data/normalIncome.csv")
   
-  crime <- read.csv("./data/CrimeData.csv")
+  #test values
+  #years <- c(1998, 2006)
+  
+  crime <- filter(crime, Year >= years[1],Year <= years[2])
+  edu <- filter(edu, Year >= years[1],Year <= years[2])
+  income <- filter(income, Year >= years[1],Year <= years[2])
+  
+  normalEdu <- edu$normalEdu
+  normalIncome <- income$normalIncome
+  "Normalized Data" <- crime$normalCrime
 
-  edu <- read.csv("./data/EducationData.csv")
-
-  income <- read.csv("./data/IncomeRebuild.csv")
-
-  years <- c(1992, 1994, 1996, 1998, 2000, 2002, 2004, 2006, 2008, 2010)
-
-  crime_formatted <- crime %>% 
-                     select(Year, Violent.Crime.rate) %>%
-                     group_by(Year) %>% 
-                     summarise(mean = mean(Violent.Crime.rate)) %>%
-                     filter(Year >= 1992, Year <= 2010, Year %% 2 == 0)
-
-  edu_data <- edu[51, 3:12]
-  edu2 <- as.numeric(as.vector(edu_data[1,]))
-
-  income1 <- c(mean(income$x1992), mean(income$x1994),
-               mean(income$x1996), mean(income$x1998), 
-               mean(income$x2000), mean(income$x2002), 
-               mean(income$x2004), mean(income$x2006), 
-               mean(income$x2008), mean(income$x2010))
-
-  p <- plot_ly(crime_formatted, x = Year, y = mean, name = "Average Violent Crime Rates in the US")
-       p %>% add_trace(y = edu2) %>% add_trace(y = income1)
+  p <- plot_ly(crime, x = Year, y = `Normalized Data`, name = "Violent Crime") %>%
+       add_trace(y = normalEdu, name = "Education") %>%
+       add_trace(y = normalIncome, name = "Income")
      
 }
