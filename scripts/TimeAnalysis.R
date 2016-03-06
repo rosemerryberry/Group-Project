@@ -25,7 +25,7 @@ TimeAnalysis <- function(stateChoice){
     
     returnSet$crimeGraphic <- plot_ly(x = crimeData[,1], y = crimeData[,2], mode = "markers") %>% layout(xaxis = list(title = "Year"), yaxis = list(title = "Violent Crime Rate"))
     returnSet$eduGraphic <- plot_ly(x = educationData[,1], y = educationData[,2], mode = "markers") %>% layout(xaxis = list(title = "Year"), yaxis = list(title = "Education Score"))
-    returnSet$incomeGraphic <- plot_ly(x = incomeData[,1], y = incomeData[,2], mode = "markers",) %>% layout(xaxis = list(title = "Year"), yaxis = list(title = "Median Income"))
+    returnSet$incomeGraphic <- plot_ly(x = incomeData[,1], y = incomeData[,2], mode = "markers") %>% layout(xaxis = list(title = "Year"), yaxis = list(title = "Median Income"))
     
   } else {
   
