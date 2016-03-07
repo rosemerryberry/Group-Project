@@ -39,8 +39,9 @@ shinyUI(navbarPage(
             id = 'CrimeMapIntroBox',
             tags$div(
                id = 'GlobalMapIntro',
-               "This is a Crime Map description placeholder! This is now just some random text to the
-          automatic box sizing. It looks like it is working as intended."
+               "Data for this map was obtained from the UCR and the Department of Justice. 
+                Crime rate is determined per capita. You can use the slider to choose what year to
+                display and the drop down menu to look at specific crimes."
             )
          )
       ),
@@ -90,8 +91,10 @@ shinyUI(navbarPage(
             id = 'EducationMapIntroBox',
             tags$div(
                id = 'GlobalMapIntro',
-               "This is an Education Map description placeholder! This is now just some random text to the
-                  automatic box sizing. It looks like it is working as intended."
+               "Data for this map was collected by The National Center for Higher Education 
+                Management Systems, and it shows the percent of high school graduates who went  
+               directly to college in each state. You can use the slide bar to choose what year
+                to display."
             )
          )
       ),
@@ -129,8 +132,8 @@ shinyUI(navbarPage(
             id = 'IncomeMapIntroBox',
             tags$div(
                id = 'GlobalMapIntro',
-               "This is an Income Map description placeholder! This is now just some random text to the
-                  automatic box sizing. It looks like it is working as intended."
+               "Data for this map was collected by the U.S. Census Bureau and displays the median
+                household income by state. You can use the slide bar to choose what year to display."
             )
          )
       ),
