@@ -1,6 +1,5 @@
-# Keagan Moo
-# 2/28/2016
-# Group Project
+# Crime Map takes in a choice year and a specific crime and makes a choropleth map of the united states
+# with the color red representing the intensity of the crime in question per state. 
 
 CrimeMap <- function(crime, choiceYear){
   library(plotly)
