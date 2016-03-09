@@ -1,6 +1,5 @@
-#Rosemary Adams
-#Last Edit: 03.01.2016
-#Creating single choropleth map of 2010 education data
+#Creates interactive choropleth map of education data
+
 # install.packages("plotly")
 require(plotly)
 require(dplyr)
@@ -30,6 +29,7 @@ EducationMap <- function(year_input) {
     lakecolor = toRGB('white')
   )
   
+  #builds map
   plot_ly(df, z = df[,year], locations = code, type = 'choropleth', 
           locationmode = 'USA-states', color = df[,year], colors = 'Purples',
           marker = list(line = l), colorbar = list(title = " % College Attendance")) %>%

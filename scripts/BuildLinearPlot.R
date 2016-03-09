@@ -1,17 +1,6 @@
-##linear plot
-#rosemary adams
-
-#years represents the input from a double slide bar. Here is the code for the UI:
-
-#sliderInput("linearPlot", label = h3("Slider Range"), min = 1992, 
-#            max = 2010, value = c(1996, 2006), sep = "", step = 2)
-
-#Here is the code for the server:
-
-#output$linearPlot <- renderPlotly({
-#   construct_linear(input$linearPlot)
-#})
-
+#constructs a normal linear plot of the three data sets
+#the user can choose the range of years for the x-axis
+#the normalization does not adjust based on the years
 construct_linear <- function(years) {
   require(dplyr)
   require(plotly)
@@ -22,14 +11,17 @@ construct_linear <- function(years) {
   #test values
   #years <- c(1998, 2006)
   
+  #filters the data sets based on the user's year choices
   crime <- filter(crime, Year >= years[1],Year <= years[2])
   edu <- filter(edu, Year >= years[1],Year <= years[2])
   income <- filter(income, Year >= years[1],Year <= years[2])
   
+  #normal data is used to show everything on the same scale
   normalEdu <- edu$normalEdu
   normalIncome <- income$normalIncome
   "Normalized Data" <- crime$normalCrime
-
+  
+  #build the plot
   p <- plot_ly(crime, x = Year, y = `Normalized Data`, name = "Violent Crime") %>%
        add_trace(y = normalEdu, name = "Education") %>%
        add_trace(y = normalIncome, name = "Income")

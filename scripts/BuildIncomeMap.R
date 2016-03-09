@@ -1,8 +1,5 @@
-#Rosemary 
-#03.02.2015
-#Income data plot formula
-
-#parameter year must be just the year, it is formatted in the function
+#builds interactive choropleth map of income data
+#parameter year_input must be just the year, it is formatted in the function
 
 IncomeMap <- function(year_input) {
   require(dplyr)
@@ -27,6 +24,7 @@ IncomeMap <- function(year_input) {
     lakecolor = toRGB('white')
   )
   
+  #builds map
   plot_ly(income, z = income[,year], locations = code, type = 'choropleth', 
           locationmode = 'USA-states', color = income[,year], colors = "Greens",
           colorbar = list(tickprefix = "$", title = "Income"), 
