@@ -1,7 +1,7 @@
-# Keagan Moo
-# Group Project
-# 3/3/2015
-# Regression Tree WOOOOO!
+# Predict Eductaion is a machine learning function that takes in a year (by default the year missing from
+# our data, 2012) and makes a prediction about the education score in that year. It requires a number
+# of packages in order to properly visualize the results as well as a data set with at least 6 years 
+# of previous data in order to make the predictions.
 
 PredictEducation <- function(yearChoice = "2012"){
   library(rpart)

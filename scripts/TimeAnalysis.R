@@ -1,7 +1,6 @@
-# Keagan Moo
-# Group Project
-# 3/5/2015
-# Linear Analysis
+# Time Analysis is a function that takes in a state of choice and interrogates our crime, income, and 
+# education data sets in order to build a linear regression statistical test for each topic. It returns
+# the statistical information related to these tests and graphs that represent them. 
 
 TimeAnalysis <- function(stateChoice){
   library(plotly)
