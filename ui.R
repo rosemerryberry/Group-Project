@@ -15,6 +15,8 @@ shinyUI(navbarPage(
    theme = 'bootstrap.css',
    
    # create tabs for different data sets
+   
+   # HOME TAB ==============================================================================================================
    tabPanel(
       # home page tab that reads in data from html/index.html
       titlePanel(
@@ -24,7 +26,7 @@ shinyUI(navbarPage(
       includeHTML('html/index.html')
    ),
    
-   # crime tab
+   # CRIME MAP TAB =========================================================================================================
    tabPanel(
       titlePanel(
          tags$div(
@@ -39,9 +41,7 @@ shinyUI(navbarPage(
             id = 'CrimeMapIntroBox',
             tags$div(
                id = 'GlobalMapIntro',
-               "Data for this map was obtained from the UCR and the Department of Justice. 
-                Crime rate is determined per capita. You can use the slider to choose what year to
-                display and the drop down menu to look at specific crimes."
+               includeHTML('html/intros/crimeMapDesc.html')
             )
          )
       ),
@@ -76,7 +76,7 @@ shinyUI(navbarPage(
    ),
    
    
-   # education tab
+   # EDUCATION TAB ===========================================================================================================
    tabPanel(
       titlePanel(
          tags$div(
@@ -91,10 +91,7 @@ shinyUI(navbarPage(
             id = 'EducationMapIntroBox',
             tags$div(
                id = 'GlobalMapIntro',
-               "Data for this map was collected by The National Center for Higher Education 
-                Management Systems, and it shows the percent of high school graduates who went  
-               directly to college in each state. You can use the slide bar to choose what year
-                to display."
+               includeHTML('html/intros/educationMapDesc.html')
             )
          )
       ),
@@ -117,7 +114,7 @@ shinyUI(navbarPage(
          mainPanel(plotlyOutput('eduMap')))
    ),
    
-   # incomse tab
+   # INCOME TAB ==============================================================================================================
    tabPanel(
       titlePanel(
          tags$div(
@@ -132,8 +129,7 @@ shinyUI(navbarPage(
             id = 'IncomeMapIntroBox',
             tags$div(
                id = 'GlobalMapIntro',
-               "Data for this map was collected by the U.S. Census Bureau and displays the median
-                household income by state. You can use the slide bar to choose what year to display."
+               includeHTML('html/intros/incomeMapDesc.html')
             )
          )
       ),
@@ -154,6 +150,28 @@ shinyUI(navbarPage(
          
          # render the education map
          mainPanel(plotlyOutput('incMap')))
+   ),
+   
+   # REPORT TAB =======================================================================================================
+   tabPanel(
+      # home page tab that reads in data from html/index.html
+      titlePanel(
+         tags$div(id = 'GlobalNavTab', 'Report'),
+         windowTitle = 'Report'
+      ),
+      'REPORT TAB - Under construction'
+   ),
+   
+   # MACHINE LEARNING TAB ==============================================================================================
+   tabPanel(
+      # home page tab that reads in data from html/index.html
+      titlePanel(
+         tags$div(id = 'GlobalNavTab', 'Machine Learning'),
+         windowTitle = 'Machine Learning'
+      ),
+      'MACHINE LEARNING TAB - Under construction'
    )
-)
+   
+   # END TABS ==========================================================================================================
+   )
 )
