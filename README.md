@@ -1,8 +1,5 @@
 <h3>Quality of Life Report</h3>
 
-Rosemary Adams, Keagan Moo,
-Sean Martin, Brendan Kellogg
-
 ABOUT
 
 Intent
@@ -22,6 +19,10 @@ Education:
 Crime:
 
 Income:
+
+Limitations
+
+The data we explore here is only at the state level, and is not completely current. In this way the data is more pertinent to evaluating our nation as a whole, rather than at a county or city level. It also doesn't reveal current issues, rather is better shows general trends across time. We can take these trends and apply them to our current situations, as we have done with our predictions, to understand the general relationship between the three factors examined. However, to apply the trends from a decade ago to current or future situations are dangerous, and should not be taken as perfect for every situation. We have done our best to highlight outliers and trends in the report, but encourage you to explore the data on your own to draw your own conclusions.
 
 The Team
 
