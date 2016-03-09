@@ -22,9 +22,9 @@ TimeAnalysis <- function(stateChoice){
     edufit <- lm(educationData[,2] ~ educationData[,1])
     incomefit <- lm(incomeData[,2] ~ incomeData[,1])
     
-    returnSet$crimeGraphic <- plot_ly(x = crimeData[,1], y = crimeData[,2], mode = "markers") %>% layout(xaxis = list(title = "Year"), yaxis = list(title = "Violent Crime Rate"))
-    returnSet$eduGraphic <- plot_ly(x = educationData[,1], y = educationData[,2], mode = "markers") %>% layout(xaxis = list(title = "Year"), yaxis = list(title = "Education Score"))
-    returnSet$incomeGraphic <- plot_ly(x = incomeData[,1], y = incomeData[,2], mode = "markers") %>% layout(xaxis = list(title = "Year"), yaxis = list(title = "Median Income"))
+    returnSet$crimeGraphic <- plot_ly(x = crimeData[,1], y = crimeData[,2], mode = "markers", name = "Crime Data") %>% layout(xaxis = list(title = "Year"), yaxis = list(title = "Violent Crime Rate")) %>% add_trace(y = fitted(crimefit), mode = "line", name = "Fit Line")
+    returnSet$eduGraphic <- plot_ly(x = educationData[,1], y = educationData[,2], mode = "markers", name = "Education Data") %>% layout(xaxis = list(title = "Year"), yaxis = list(title = "Education Score")) %>% add_trace(y = fitted(edufit), mode = "line", name = "Fit Line")
+    returnSet$incomeGraphic <- plot_ly(x = incomeData[,1], y = incomeData[,2], mode = "markers", name = "Income Data") %>% layout(xaxis = list(title = "Year"), yaxis = list(title = "Median Income")) %>% add_trace(y = fitted(incomefit), mode = "line", name = "Fit Line")
     
   } else {
   
@@ -38,9 +38,9 @@ TimeAnalysis <- function(stateChoice){
     incomedat <- rev(unlist(incomeData[1,2:length(incomeData[1,])]))
     incomefit <- lm(incomedat ~ yearsnum)
     
-    returnSet$crimeGraphic <- plot_ly(x = yearsnum, y = crimeData[,2], mode = "markers") %>% layout(xaxis = list(title = "Year"), yaxis = list(title = "Violent Crime Rate"))
-    returnSet$eduGraphic <- plot_ly(x = yearsnum, y = edudat, mode = "markers") %>% layout(xaxis = list(title = "Year"), yaxis = list(title = "Education Score"))
-    returnSet$incomeGraphic <- plot_ly(x = yearsnum, y = incomedat, mode = "markers") %>% layout(xaxis = list(title = "Year"), yaxis = list(title = "Median Income"))
+    returnSet$crimeGraphic <- plot_ly(x = yearsnum, y = crimeData[,2], mode = "markers", name = "Crime Data") %>% layout(xaxis = list(title = "Year"), yaxis = list(title = "Violent Crime Rate")) %>% add_trace(y = fitted(crimefit), mode = "line", name = "Fit Line")
+    returnSet$eduGraphic <- plot_ly(x = yearsnum, y = edudat, mode = "markers", name = "Education Data") %>% layout(xaxis = list(title = "Year"), yaxis = list(title = "Education Score")) %>% add_trace(y = fitted(edufit), mode = "line", name = "Fit Line")
+    returnSet$incomeGraphic <- plot_ly(x = yearsnum, y = incomedat, mode = "markers", name = "Income Data") %>% layout(xaxis = list(title = "Year"), yaxis = list(title = "Median Income")) %>% add_trace(y = fitted(incomefit), mode = "line", name = "Fit Line")
   }  
     
     
