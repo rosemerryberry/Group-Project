@@ -7,6 +7,8 @@ library(dplyr)
 source('./scripts/BuildCrimeMap.R')
 source('./scripts/BuildEducationMap.R')
 source('./scripts/BuildIncomeMap.R')
+source('./scripts/BuildLinearPlot.R')
+source('./scripts/PredictEducation.R')
 
 # Begin Shiny Server
 shinyServer(function(input, output) {
@@ -24,5 +26,15 @@ shinyServer(function(input, output) {
   # Output the income data
   output$incMap <- renderPlotly({
     IncomeMap(input$incYear)
+  })
+  
+  # output the NormLinPlot data
+  output$linPlot <- renderPlotly({
+    construct_linear(input$linearPlot)
+  })
+  
+  # output machine learning data
+  output$PredictEdu <- renderPlot({
+     PredictEducation()
   })
 })

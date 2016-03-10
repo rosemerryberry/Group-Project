@@ -35,18 +35,7 @@ shinyUI(navbarPage(
          )
       ),
       
-      # give intro to user
-      tags$p(
-         tags$div(
-            id = 'CrimeMapIntroBox',
-            tags$div(
-               id = 'GlobalMapIntro',
-               includeHTML('html/intros/crimeMapDesc.html')
-            )
-         )
-      ),
-      
-      titlePanel(tags$div(id = "CrimeMapHeader",
+      titlePanel(tags$div(id = "TabSectionHeader",
                           checked = NA,
                           'Crime Map')),
       
@@ -72,7 +61,18 @@ shinyUI(navbarPage(
             )
          ),
          # Render the crime map
-         mainPanel(plotlyOutput('crimeMap')))
+         mainPanel(plotlyOutput('crimeMap'))),
+      
+      # give intro to user
+      tags$p(
+         tags$div(
+            id = 'TabIntroBox',
+            tags$div(
+               id = 'GlobalMapIntro',
+               includeHTML('html/intros/crimeMapDesc.html')
+            )
+         )
+      )
    ),
    
    
@@ -85,18 +85,7 @@ shinyUI(navbarPage(
          )
       ),
       
-      # give intro to user
-      tags$p(
-         tags$div(
-            id = 'EducationMapIntroBox',
-            tags$div(
-               id = 'GlobalMapIntro',
-               includeHTML('html/intros/educationMapDesc.html')
-            )
-         )
-      ),
-      
-      titlePanel(tags$div(id = "EducationMapHeader", 
+      titlePanel(tags$div(id = "TabSectionHeader", 
                           'Education Map')),
       
       # Create sidebar layout
@@ -111,7 +100,18 @@ shinyUI(navbarPage(
          ),
          
          # render the education map
-         mainPanel(plotlyOutput('eduMap')))
+         mainPanel(plotlyOutput('eduMap'))),
+      
+      # display map description
+      tags$p(
+         tags$div(
+            id = 'TabIntroBox',
+            tags$div(
+               id = 'GlobalMapIntro',
+               includeHTML('html/intros/educationMapDesc.html')
+            )
+         )
+      )
    ),
    
    # INCOME TAB ==============================================================================================================
@@ -123,18 +123,7 @@ shinyUI(navbarPage(
          )
       ),
       
-      # give intro to user
-      tags$p(
-         tags$div(
-            id = 'IncomeMapIntroBox',
-            tags$div(
-               id = 'GlobalMapIntro',
-               includeHTML('html/intros/incomeMapDesc.html')
-            )
-         )
-      ),
-      
-      titlePanel(tags$div(id = "IncomeMapHeader",
+      titlePanel(tags$div(id = "TabSectionHeader",
                           'Income Map')),
       
       # Create sidebar layout
@@ -149,7 +138,18 @@ shinyUI(navbarPage(
          ),
          
          # render the education map
-         mainPanel(plotlyOutput('incMap')))
+         mainPanel(plotlyOutput('incMap'))),
+      
+      # give intro to user
+      tags$p(
+         tags$div(
+            id = 'TabIntroBox',
+            tags$div(
+               id = 'GlobalMapIntro',
+               includeHTML('html/intros/incomeMapDesc.html')
+            )
+         )
+      )
    ),
    
    # REPORT TAB =======================================================================================================
@@ -159,17 +159,45 @@ shinyUI(navbarPage(
          tags$div(id = 'GlobalNavTab', 'Report'),
          windowTitle = 'Report'
       ),
-      'REPORT TAB - Under construction'
+      
+      titlePanel(tags$div(id = "TabSectionHeader",
+                          'Linear Plot')),
+      
+      # define sidebar
+         sidebarLayout(
+            
+            sidebarPanel(
+               
+               sliderInput("linearPlot", label = h3("Year Range"), min = 1992, 
+                           max = 2010, value = c(1996, 2006), sep = "", step = 2)
+            ),
+            
+            # render the linear plot
+            mainPanel(plotlyOutput('linPlot')))
    ),
    
-   # MACHINE LEARNING TAB ==============================================================================================
+   # PREDICTION TAB ==============================================================================================
    tabPanel(
       # home page tab that reads in data from html/index.html
       titlePanel(
-         tags$div(id = 'GlobalNavTab', 'Machine Learning'),
-         windowTitle = 'Machine Learning'
+         tags$div(id = 'GlobalNavTab', 'Prediction'),
+         windowTitle = 'Prediction'
       ),
-      'MACHINE LEARNING TAB - Under construction'
+      
+      titlePanel(tags$div(id = "TabSectionHeader",
+                          'Education Prediction')),
+      
+      tags$div(id = 'TabIntroBox',
+         mainPanel(plotOutput('PredictEdu')),
+      
+      tags$p(
+            tags$div(
+               id = 'GlobalMapIntro',
+               includeHTML('html/intros/PredictEducationWriteup.html')
+            )
+         )
+      )
+      
    )
    
    # END TABS ==========================================================================================================

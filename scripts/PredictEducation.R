@@ -115,11 +115,11 @@ PredictEducation <- function(yearChoice = "2012"){
   returnSet <- list()
   
   # A tree for posterity
-  returnSet$tree <- TreeofKnowledge
+  # returnSet$tree <- TreeofKnowledge
   # A graph for the awe
   returnSet$graphic <- BreadandCircuses
   # And a prediction to make everyone look good
-  returnSet$prediction <- TheFuture
+  # returnSet$prediction <- TheFuture
   
-  return(returnSet)
+  return(BreadandCircuses)
 }

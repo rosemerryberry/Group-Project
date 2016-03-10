@@ -25,5 +25,6 @@ construct_linear <- function(years) {
   p <- plot_ly(crime, x = Year, y = `Normalized Data`, name = "Violent Crime") %>%
        add_trace(y = normalEdu, name = "Education") %>%
        add_trace(y = normalIncome, name = "Income")
-     
+   
+  return(p)
 }

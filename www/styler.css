@@ -2,13 +2,14 @@
 /* Report Styler */
 
 /* Import fonts from Google Fonts */
-@import url("https://fonts.googleapis.com/css?family=Open+Sans:400,300,300italic,600,400italic,600italic,800,700italic,700,800italic");
+@import url(https://fonts.googleapis.com/css?family=Open+Sans:400,300,300italic,600,400italic,600italic,800,700italic,700,800italic);
+@import url(https://fonts.googleapis.com/css?family=Dosis:400,200,300,500,600,700,800);
 
 
 /* ===== HTML TAG PROPERTIES ===== */
 
 h1 {
-	font-family: Arial, Helvetica, sans-serif;
+	font-family: 'Dosis', sans-serif;
 	font-weight: 500;
 	color: #ad1d28;
 }
@@ -16,7 +17,7 @@ h1 {
 /* ===== GLOBAL PROPERTIES ===== */
 
 #GlobalNavTab {
-	font-family: Arial, Helvetica, sans-serif;
+	font-family: 'Dosis', sans-serif;
 	font-size: 30px;
 	font-weight: bold;
 	color: #ffffff;
@@ -24,7 +25,7 @@ h1 {
 }
 
 #GlobalMapIntro {
-	font-family: "Open Sans", sans-serif;
+	font-family: 'Dosis', sans-serif;
 	font-weight: 500;
 	text-align: center;
 	font-size: 24px;
@@ -41,8 +42,10 @@ h1 {
 
 #homeBGImage::after {
   content: "";
-  background: url(imgs/uwlogo.png);
-  opacity: 0.5;
+  background: url(imgs/uwlogo_env.jpg);
+	border: 2px;
+	border-color: #ffffff;
+  opacity: 0.35;
   top: 0;
   left: 0;
   bottom: 0;
@@ -52,85 +55,61 @@ h1 {
 }
 
 #homePageTitle {
+	font-family: 'Dosis', sans-serif;
 	text-align: center;
 	font-weight: bold;
-	font-size: 40px;
+	color: #ffffff;
+	font-size: 60px;
 	opacity: 1.0 !important;
+	-webkit-text-stroke-width: 3px;
+	-webkit-text-stroke-color: black;
 }
 
-#contributorReportBox {
+#HomeContentBox {
 	width: auto;
 	padding: 15px;
-	border: 5px;
+	border: 2px;
 	border-style: solid;
 	border-color: #353436
-	-webkit-border-radius: 25px;
 	border-radius: 25px;
-	background-color: #EBEBEB;
+	background-color: rgba(235, 235, 235, .6);
 	margin-left: 100px;
 	margin-right: 100px;
 	margin-top: 50px;
 }
 
-#contributorReportHeader {
+#HomeContentBox {
+	font-size: 20px;
+}
+
+#HomeContentHeader {
 	font-size: 35px;
 	font-weight: bold;
 }
 
-#contributorReportContent {
-	font-size: 20px;
-	font-style: italic;
+#HomeContentText {
+	font-family: 'Dosis', sans-serif;
 }
 
-/* ===== MAP PROPERTIES ===== */
+/* ===== TAB PROPERTIES ===== */
 
-#CrimeMapHeader {
-	font-family: Arial, Helvetica, sans-serif;
+#TabSectionHeader {
+	font-family: 'Dosis', sans-serif;
 	font-weight: 500;
-	color: #ad1d28;
+	font-size: 50px;
+	color: #000000;
+	text-align: center;
+	padding-bottom: 50px;
 }
 
-#CrimeMapIntroBox {
-  width: auto;
-  padding: 15px;
-  border: 5px;
+#TabIntroBox {
+	width: auto;
+	padding: 15px;
+	border: 2px;
 	border-style: solid;
-	border-color: #ad1d28;
-	background-color: #EBEBEB;
-	margin-left: 100px;
-	margin-right: 100px;
-}
-
-#EducationMapHeader {
-	font-family: Arial, Helvetica, sans-serif;
-	font-weight: 500;
-	color: #371177;
-}
-
-#EducationMapIntroBox {
-  width: auto;
-  padding: 15px;
-  border: 5px;
-	border-style: solid;
-	border-color: #371177;
-	background-color: #EBEBEB;
-	margin-left: 100px;
-	margin-right: 100px;
-}
-
-#IncomeMapHeader {
-	font-family: Arial, Helvetica, sans-serif;
-	font-weight: 500;
-	color: #1C7729;
-}
-
-#IncomeMapIntroBox {
-  width: auto;
-  padding: 15px;
-  border: 5px;
-	border-style: solid;
-	border-color: #1C7729;
-	background-color: #EBEBEB;
+	border-color: #353436
+	border-radius: 25px;
+	background-color: rgba(235, 235, 235, .6);
 	margin-left: 100px;
 	margin-right: 100px;
 }
