@@ -43,6 +43,7 @@ h1 {
 #homeBGImage::after {
   content: "";
   background: url(imgs/uwlogo_env.jpg);
+	background-size: cover;
 	border: 2px;
 	border-color: #ffffff;
   opacity: 0.35;
@@ -75,7 +76,8 @@ h1 {
 	background-color: rgba(235, 235, 235, .6);
 	margin-left: 100px;
 	margin-right: 100px;
-	margin-top: 50px;
+	margin-top: 25px;
+	margin-bottom: 10px;
 }
 
 #HomeContentBox {
