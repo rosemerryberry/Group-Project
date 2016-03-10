@@ -1,9 +1,0 @@
-In the state of `r stateChoice` you can see the trends in crime, education and income displayed and fitted above.
-
-The fit shows that the violent crime rate is changing at a rate of `r returnSet$crimeCoeff[2]`per year with a pvalue of `r returnSet$crimeP`.
-
-The fit shows that percentage of college going students is changing at a rate of `r returnSet$eduCoeff[2]`% per year with a pvalue of `r returnSet$eduP`.
-
-The fit shows that median income is changing at a rate of `r returnSet$incomeCoeff[2]`per year with a pvalue of `r returnSet$incomeP`.
-
-*Note a p=value of 0.05 or lower is considered significant. 
