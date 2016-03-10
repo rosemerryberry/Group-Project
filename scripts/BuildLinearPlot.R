@@ -22,9 +22,10 @@ construct_linear <- function(years) {
   "Normalized Data" <- crime$normalCrime
   
   #build the plot
-  p <- plot_ly(crime, x = Year, y = `Normalized Data`, name = "Violent Crime") %>%
-       add_trace(y = normalEdu, name = "Education") %>%
-       add_trace(y = normalIncome, name = "Income")
+  p <- plot_ly(crime, x = Year, y = `Normalized Data`, name = "Violent Crime", 
+               line = list(color = "red")) %>%
+       add_trace(y = normalEdu, name = "Education", line = list(color = "purple")) %>%
+       add_trace(y = normalIncome, name = "Income", line = list(color = "green"))
    
   return(p)
 }
