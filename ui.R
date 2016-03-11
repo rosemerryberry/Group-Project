@@ -526,6 +526,7 @@ shinyUI(navbarPage(
             # Define a drop-down style input with all 50 states
             selectInput("crossState", label = h3("State"),
                         choices = list(
+                           'United States' = 'TOT',
                            'Alabama' = 'AL',
                            'Alaska' = 'AK',
                            'Arizona' = 'AZ',
