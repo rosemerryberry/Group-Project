@@ -22,7 +22,7 @@ PredictEducation <- function(yearChoice = "2012"){
   years <- c("1992", "1994", "1996", "1998", "2000", "2002", "2004", "2006", "2008", "2010", "2012")
   crimeData <- read.csv("./data/CrimeData.csv") %>% filter(State != "Total", Year %in% years )
   educationData <- read.csv("./data/EducationData.csv")
-  incomeData <- read.csv("./data/IncomeRebuild.csv")
+  incomeData <- read.csv("./data/IncomeData.csv")
   
   # Now let's establish the features we want to test against and training data. 
   # First "Current Year Data"
