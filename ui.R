@@ -416,7 +416,7 @@ shinyUI(navbarPage(
                tags$p(
                   tags$div(
                      id = 'GlobalMapIntro',
-                     includeHTML('html/intros/linePlotText.html')
+                     includeHTML('html/intros/timeAnalysisText.html')
                   )
                )
       ),

@@ -39,7 +39,7 @@ TimeAnalysis <- function(stateChoice, dataChoice){
   
     crimeData <- read.csv("./data/CrimeData.csv") %>% filter(State != "Total", Year %in% years, Code == stateChoice) %>% select(Year, Violent.Crime.rate)
     educationData <- read.csv("./data/EducationData.csv") %>% filter(code == stateChoice) %>% select(-State, -x2012, -X)
-    incomeData <- read.csv("./data/IncomeRebuild.csv") %>% filter(code == stateChoice) %>% select(-x2012, -X)
+    incomeData <- read.csv("./data/IncomeData.csv") %>% filter(code == stateChoice) %>% select(-x2012, -X)
     
     crimefit <- lm(crimeData[,2] ~ crimeData[,1])
     edudat <- unlist(educationData[1,1:length(incomeData[1,]) - 1])
