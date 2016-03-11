@@ -7,7 +7,7 @@ BuildHistogram <- function(data_type, year, stateOne, stateTwo, stateThree){
 
 edf <- read.csv("./data/EducationData.csv")
 cdf <- read.csv("./data/CrimeData.csv")
-idf <- read.csv("./data/IncomeRebuild.csv")
+idf <- read.csv("./data/IncomeData.csv")
 
 #For Changing to xDATE format to match the columns in the dataframes
 yearChoiceX <- paste0("x", year)
