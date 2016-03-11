@@ -9,6 +9,7 @@ source('./scripts/BuildEducationMap.R')
 source('./scripts/BuildIncomeMap.R')
 source('./scripts/BuildLinearPlot.R')
 source('./scripts/PredictEducation.R')
+source('./scripts/TimeAnalysis.R')
 
 # Begin Shiny Server
 shinyServer(function(input, output) {
@@ -36,5 +37,10 @@ shinyServer(function(input, output) {
   # output machine learning data
   output$PredictEdu <- renderPlot({
      PredictEducation()
+  })
+  
+  # output the time analysis data
+  output$timeAnalysis <- renderPlotly({
+     TimeAnalysis(input$timeStateChoice, input$timeDataChoice)
   })
 })

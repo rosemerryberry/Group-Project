@@ -2,7 +2,7 @@
 # education data sets in order to build a linear regression statistical test for each topic. It returns
 # the statistical information related to these tests and graphs that represent them. 
 
-TimeAnalysis <- function(stateChoice = "WA", dataChoice = "Crime"){
+TimeAnalysis <- function(stateChoice, dataChoice){
   library(plotly)
   library(dplyr)
   # State choice should be in code form but can inclued TOT for total. 

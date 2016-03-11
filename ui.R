@@ -173,7 +173,80 @@ shinyUI(navbarPage(
             ),
             
             # render the linear plot
-            mainPanel(plotlyOutput('linPlot')))
+            mainPanel(plotlyOutput('linPlot'))),
+      
+      titlePanel(tags$div(id = "TabSectionHeader",
+                          'Time Analysis')),
+      
+      # define sidebar
+         sidebarLayout(
+            
+            sidebarPanel(
+               selectInput("timeDataChoice", label = h3("Data"),
+                           choices = list(
+                              'Crime' = 'Crime',
+                              'Education' = 'Education',
+                              'Income' = 'Income'
+                           )
+               ),
+               
+               selectInput("timeStateChoice", label = h3("State"),
+                           choices = list(
+                              'United States' = 'TOT',
+                              'Alabama' = 'AL',
+                              'Alaska' = 'AK',
+                              'Arizona' = 'AZ',
+                              'Arkansas' = 'AK',
+                              'California' = 'CA',
+                              'Colorado' = 'CO',
+                              'Connecticut' = 'CT',
+                              'Delaware' = 'DE',
+                              'Florida' = 'FL',
+                              'Georgia' = 'GA',
+                              'Hawaii' = 'HI',
+                              'Idaho' = 'ID',
+                              'Illinois' = 'IL',
+                              'Indiana' = 'IN',
+                              'Iowa' = 'IA',
+                              'Kansas' = 'KS',
+                              'Kentucky' = 'KY',
+                              'Louisiana' = 'LA',
+                              'Maine' = 'ME',
+                              'Maryland' = 'MD',
+                              'Massachusetts' = 'MA',
+                              'Michigan' = 'MI',
+                              'Minnesota' = 'MN',
+                              'Mississippi' = 'MS',
+                              'Missouri' = 'MO',
+                              'Montana' = 'MT',
+                              'Nebraska' = 'NE',
+                              'Nevada' = 'NV',
+                              'New Hampsire' = 'NH',
+                              'New Jersey' = 'NJ',
+                              'New Mexico' = 'NM',
+                              'New York' = 'NY',
+                              'North Carolina' = 'NC',
+                              'North Dakota' = 'ND',
+                              'Ohio' = 'OH',
+                              'Oklahoma' = 'OK',
+                              'Oregon' = 'OR',
+                              'Pennsylvania' = 'PA',
+                              'Rhode Island' = 'RI',
+                              'South Carolina' = 'SC',
+                              'South Dakota' = 'SD',
+                              'Tennessee' = 'TN',
+                              'Texas' = 'TX',
+                              'Utah' = 'UT',
+                              'Vermont' = 'VT',
+                              'Virginia' = 'VA',
+                              'Washington' = 'WA',
+                              'West Virgina' = 'WV',
+                              'Wisconsin' = 'WI',
+                              'Wyoming' = 'WY'
+                           )
+                        )
+            ),
+            mainPanel(plotlyOutput('timeAnalysis')))
    ),
    
    # PREDICTION TAB ==============================================================================================
