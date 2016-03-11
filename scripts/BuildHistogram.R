@@ -16,26 +16,31 @@ yearChoiceX <- paste0("x", year)
 #Conditionals for the dataset read in.
 
 if (data_type == "Income") {
-  df <- filter(idf, code == stateOne | code == stateTwo| code == stateThree ) %>%
-    select(yearChoiceX)
+  df <- filter(idf, code == stateOne| code == stateTwo| code == stateThree ) %>%
+    select(eval(parse(text=yearChoiceX)), code)
+  dataname <- "Median Income"
+  colorChoice <- "darkgreen"
 
 } else if (data_type == "Education") {
-  df <- filter(edf, code = stateOne| code == stateTwo | code == stateThree) %>%
-    select(yearChoiceX)
+  df <- filter(edf, code == stateOne| code == stateTwo | code == stateThree) %>%
+    select(eval(parse(text=yearChoiceX)), code)
+  dataname <- "Education Score"
+  colorChoice <- "darkblue"
 
 } else if (data_type == "Crime") {
-  df <- filter(cdf, Code == stateOne| Code == stateTwo| Code == stateThree, year) %>%
-    select(Violent.Crime.rate)
-  colnames(df) <- yearChoiceX
-} else {
-   return ('This is not a Supported Data Type');
+  df <- filter(cdf, Code == stateOne| Code == stateTwo| Code == stateThree) %>%
+    filter(Year == eval(parse(text=year))) %>%
+    select(Violent.Crime.rate, Code)
+  colnames(df) <- c(yearChoiceX, "code")
+  dataname <- "Violent Crime Rate"
+  colorChoice <- "darkred"
+  
 }
 
 #Ploting Bar Chart
-plot_ly(df, y = eval(parse(text=yearChoiceX)), type = "bar")
-###########TEST######
+plot_ly(df, y = eval(parse(text=yearChoiceX)), x = code, type = "bar", marker = list(color = toRGB(colorChoice))) %>%
+  layout(yaxis = list(title = paste(dataname)), xaxis = list(title = "States")) %>%
+  return()
 
-
-######################
 }
 
