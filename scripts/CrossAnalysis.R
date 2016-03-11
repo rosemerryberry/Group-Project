@@ -1,11 +1,31 @@
 # Cross Analysis is a program that runs linear analysis between two of three data sets for a state or America as a whole.
-# It takes a state code and two data sets and returns a graphic with informaiton as to the relationship between the 
+# It takes a state code and a combo tag and returns a graphic with informaiton as to the relationship between the 
 # two data sets
 
-CrossAnalysis <- function(stateChoice, dataChoice1, dataChoice2){
+CrossAnalysis <- function(stateChoice, comboCode){
   library(plotly)
   library(dplyr)
   # State choice should be in code form but can inclued TOT for total. 
+  
+  # input it split into two useable strings this maintains some of the codes generality. 
+  if (comboCode == "Crime-Income"){
+    
+    dataChoice1 = "Crime"
+    dataChoice2 = "Income"
+    
+  } else if (comboCode == "Income-Education") {
+    
+    dataChoice1 = "Income"
+    dataChoice2 = "Education"
+    
+  } else {
+    
+    dataChoice1 = "Education"
+    dataChoice2 = "Crime"
+    
+  }
+  
+  
   
   # Get all years we will be doing the time analysis for. 
   years <- c("1992", "1994", "1996", "1998", "2000", "2002", "2004", "2006", "2008", "2010")
