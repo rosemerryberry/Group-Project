@@ -12,7 +12,7 @@ TimeAnalysis <- function(stateChoice, dataChoice){
   yearsnum <- c(1992, 1994, 1996, 1998, 2000, 2002, 2004, 2006, 2008, 2010)
   
   # Set general size
-  DotSize <- 1
+  DotSize <- 10
   # Aquire the appropriate data
   returnSet <- c()
   if (stateChoice == "TOT"){
