@@ -160,8 +160,240 @@ shinyUI(navbarPage(
          windowTitle = 'Report'
       ),
       
+      # UI SECTION FOR SUMMARY TABLE --------------------------------------
+      titlePanel(tags$div(id = "TabSectionHeader",
+                          'Summary')),
+      
+      # Print the summary description, wrapped in the text box
+      tags$div(id = 'TabIntroBox',
+         tags$p(
+            tags$div(
+               id = 'GlobalMapIntro',
+               includeHTML('html/intros/sumTableText.html')
+            )
+         )
+      ),
+      
+      # render the summary table, centered horizontally
+      fluidRow(
+         column(12, align="center",
+                tableOutput('sumTable')
+         )
+      ),
+      
+      # UI SECTION FOR HISTOGRAM ---------------------------------------------
+      titlePanel(tags$div(id = "TabSectionHeader",
+                          'Histogram Analysis')),
+      
+      tags$div(id = 'TabIntroBox',
+               tags$p(
+                  tags$div(
+                     id = 'GlobalMapIntro',
+                     includeHTML('html/intros/sumHistText.html')
+                  )
+               )
+      ),
+      
+      sidebarLayout(
+         
+         sidebarPanel(
+            
+            # Define a drop-dwon style input with all three crime types
+            selectInput("histDataType", label = h3("Data"),
+                        choices = list(
+                           'Crime' = 'Crime',
+                           'Education' = 'Education',
+                           'Income' = 'Income'
+                        )
+            ),
+            
+            sliderInput("histYear", label = h3("Year"), min = 1992, 
+                        max = 2010, value = 2000, sep = "", step = 2),
+            
+            # Define a drop-down style input with all 50 states for first state choice
+            selectInput("histStateOne", label = h3("State One"),
+                        choices = list(
+                           'Alabama' = 'AL',
+                           'Alaska' = 'AK',
+                           'Arizona' = 'AZ',
+                           'Arkansas' = 'AR',
+                           'California' = 'CA',
+                           'Colorado' = 'CO',
+                           'Connecticut' = 'CT',
+                           'Delaware' = 'DE',
+                           'Florida' = 'FL',
+                           'Georgia' = 'GA',
+                           'Hawaii' = 'HI',
+                           'Idaho' = 'ID',
+                           'Illinois' = 'IL',
+                           'Indiana' = 'IN',
+                           'Iowa' = 'IA',
+                           'Kansas' = 'KS',
+                           'Kentucky' = 'KY',
+                           'Louisiana' = 'LA',
+                           'Maine' = 'ME',
+                           'Maryland' = 'MD',
+                           'Massachusetts' = 'MA',
+                           'Michigan' = 'MI',
+                           'Minnesota' = 'MN',
+                           'Mississippi' = 'MS',
+                           'Missouri' = 'MO',
+                           'Montana' = 'MT',
+                           'Nebraska' = 'NE',
+                           'Nevada' = 'NV',
+                           'New Hampsire' = 'NH',
+                           'New Jersey' = 'NJ',
+                           'New Mexico' = 'NM',
+                           'New York' = 'NY',
+                           'North Carolina' = 'NC',
+                           'North Dakota' = 'ND',
+                           'Ohio' = 'OH',
+                           'Oklahoma' = 'OK',
+                           'Oregon' = 'OR',
+                           'Pennsylvania' = 'PA',
+                           'Rhode Island' = 'RI',
+                           'South Carolina' = 'SC',
+                           'South Dakota' = 'SD',
+                           'Tennessee' = 'TN',
+                           'Texas' = 'TX',
+                           'Utah' = 'UT',
+                           'Vermont' = 'VT',
+                           'Virginia' = 'VA',
+                           'Washington' = 'WA',
+                           'West Virgina' = 'WV',
+                           'Wisconsin' = 'WI',
+                           'Wyoming' = 'WY'
+                        )
+            ),
+            
+            # Define a drop-down style input with all 50 states for second state choice
+            selectInput("histStateTwo", label = h3("State Two"),
+                        choices = list(
+                           'Alabama' = 'AL',
+                           'Alaska' = 'AK',
+                           'Arizona' = 'AZ',
+                           'Arkansas' = 'AR',
+                           'California' = 'CA',
+                           'Colorado' = 'CO',
+                           'Connecticut' = 'CT',
+                           'Delaware' = 'DE',
+                           'Florida' = 'FL',
+                           'Georgia' = 'GA',
+                           'Hawaii' = 'HI',
+                           'Idaho' = 'ID',
+                           'Illinois' = 'IL',
+                           'Indiana' = 'IN',
+                           'Iowa' = 'IA',
+                           'Kansas' = 'KS',
+                           'Kentucky' = 'KY',
+                           'Louisiana' = 'LA',
+                           'Maine' = 'ME',
+                           'Maryland' = 'MD',
+                           'Massachusetts' = 'MA',
+                           'Michigan' = 'MI',
+                           'Minnesota' = 'MN',
+                           'Mississippi' = 'MS',
+                           'Missouri' = 'MO',
+                           'Montana' = 'MT',
+                           'Nebraska' = 'NE',
+                           'Nevada' = 'NV',
+                           'New Hampsire' = 'NH',
+                           'New Jersey' = 'NJ',
+                           'New Mexico' = 'NM',
+                           'New York' = 'NY',
+                           'North Carolina' = 'NC',
+                           'North Dakota' = 'ND',
+                           'Ohio' = 'OH',
+                           'Oklahoma' = 'OK',
+                           'Oregon' = 'OR',
+                           'Pennsylvania' = 'PA',
+                           'Rhode Island' = 'RI',
+                           'South Carolina' = 'SC',
+                           'South Dakota' = 'SD',
+                           'Tennessee' = 'TN',
+                           'Texas' = 'TX',
+                           'Utah' = 'UT',
+                           'Vermont' = 'VT',
+                           'Virginia' = 'VA',
+                           'Washington' = 'WA',
+                           'West Virgina' = 'WV',
+                           'Wisconsin' = 'WI',
+                           'Wyoming' = 'WY'
+                        ), selected = 'AK'
+            ),
+            
+            # Define a drop-down style input with all 50 states for third state choice
+            selectInput("histStateThree", label = h3("State Three"),
+                        choices = list(
+                           'Alabama' = 'AL',
+                           'Alaska' = 'AK',
+                           'Arizona' = 'AZ',
+                           'Arkansas' = 'AR',
+                           'California' = 'CA',
+                           'Colorado' = 'CO',
+                           'Connecticut' = 'CT',
+                           'Delaware' = 'DE',
+                           'Florida' = 'FL',
+                           'Georgia' = 'GA',
+                           'Hawaii' = 'HI',
+                           'Idaho' = 'ID',
+                           'Illinois' = 'IL',
+                           'Indiana' = 'IN',
+                           'Iowa' = 'IA',
+                           'Kansas' = 'KS',
+                           'Kentucky' = 'KY',
+                           'Louisiana' = 'LA',
+                           'Maine' = 'ME',
+                           'Maryland' = 'MD',
+                           'Massachusetts' = 'MA',
+                           'Michigan' = 'MI',
+                           'Minnesota' = 'MN',
+                           'Mississippi' = 'MS',
+                           'Missouri' = 'MO',
+                           'Montana' = 'MT',
+                           'Nebraska' = 'NE',
+                           'Nevada' = 'NV',
+                           'New Hampsire' = 'NH',
+                           'New Jersey' = 'NJ',
+                           'New Mexico' = 'NM',
+                           'New York' = 'NY',
+                           'North Carolina' = 'NC',
+                           'North Dakota' = 'ND',
+                           'Ohio' = 'OH',
+                           'Oklahoma' = 'OK',
+                           'Oregon' = 'OR',
+                           'Pennsylvania' = 'PA',
+                           'Rhode Island' = 'RI',
+                           'South Carolina' = 'SC',
+                           'South Dakota' = 'SD',
+                           'Tennessee' = 'TN',
+                           'Texas' = 'TX',
+                           'Utah' = 'UT',
+                           'Vermont' = 'VT',
+                           'Virginia' = 'VA',
+                           'Washington' = 'WA',
+                           'West Virgina' = 'WV',
+                           'Wisconsin' = 'WI',
+                           'Wyoming' = 'WY'
+                        ), selected = 'AZ'
+            )
+         ),
+         mainPanel(plotlyOutput('histogram'))),
+      
+      
+      
+      # UI SECTION FOR LINEAR PLOT ------------------------------------
       titlePanel(tags$div(id = "TabSectionHeader",
                           'Linear Plot')),
+      
+      tags$div(id = 'TabIntroBox',
+               tags$p(
+                  tags$div(
+                     id = 'GlobalMapIntro',
+                     includeHTML('html/intros/linePlotText.html')
+                  )
+               )
+      ),
       
       # define sidebar
          sidebarLayout(
@@ -175,13 +407,25 @@ shinyUI(navbarPage(
             # render the linear plot
             mainPanel(plotlyOutput('linPlot'))),
       
+      
+      # UI SPOT FOR TIME ANALYSIS GRAPH -----------------------------------
       titlePanel(tags$div(id = "TabSectionHeader",
                           'Time Analysis')),
       
-      # define sidebar
+      tags$div(id = 'TabIntroBox',
+               tags$p(
+                  tags$div(
+                     id = 'GlobalMapIntro',
+                     includeHTML('html/intros/linePlotText.html')
+                  )
+               )
+      ),
+      
          sidebarLayout(
             
             sidebarPanel(
+               
+               # Define a drop-dwon style input with all three crime types
                selectInput("timeDataChoice", label = h3("Data"),
                            choices = list(
                               'Crime' = 'Crime',
@@ -190,6 +434,7 @@ shinyUI(navbarPage(
                            )
                ),
                
+               # Define a drop-down style input with all 50 states + US
                selectInput("timeStateChoice", label = h3("State"),
                            choices = list(
                               'United States' = 'TOT',
