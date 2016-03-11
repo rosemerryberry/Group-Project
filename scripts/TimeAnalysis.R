@@ -26,6 +26,7 @@ TimeAnalysis <- function(stateChoice, dataChoice){
     edufit <- lm(educationData[,2] ~ educationData[,1])
     incomefit <- lm(incomeData[,2] ~ incomeData[,1])
     
+    # Build names for the legend that include the slope so that the user can see the actual number on the graph
     crimeName <- paste("Fit: m =", round(crimefit$coefficients[2]), digits = 2)
     eduName <- paste("Fit: m =", round(edufit$coefficients[2]), digits = 2)
     incomeName <- paste("Fit: m =", round(incomefit$coefficients[2]), digits = 2)
