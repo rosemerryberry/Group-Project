@@ -580,29 +580,19 @@ shinyUI(navbarPage(
             ),
             
             # Define a drop-dwon style input with all three crime types for first data type
-            selectInput("crossDataOne", label = h3("Data"),
+            selectInput("crossData", label = h3("Data"),
                         choices = list(
-                           'Crime' = 'Crime',
-                           'Education' = 'Education',
-                           'Income' = 'Income'
+                           'Crime Vs. Income' = 'Crime-Income',
+                           'Income Vs. Education' = 'Income-Education',
+                           'Education Vs. Crime' = 'Education-Crime'
                         )
-            ),
-            
-            # Define a drop-dwon style input with all three crime types for second data type
-            selectInput("crossDataTwo", label = h3("Data"),
-                        choices = list(
-                           'Crime' = 'Crime',
-                           'Education' = 'Education',
-                           'Income' = 'Income'
-                        ), selected = 'Education'
             )
-            
-         ),
+            ),
+      
          mainPanel(plotlyOutput('crossAnalysis')))
       
       
-      
-   ),
+),
    
    # PREDICTION TAB ==============================================================================================
    tabPanel(

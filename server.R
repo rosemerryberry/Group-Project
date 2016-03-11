@@ -64,7 +64,6 @@ shinyServer(function(input, output) {
   
   # Outpuyt the Cross Analysis plot
   output$crossAnalysis <- renderPlotly({
-     CrossAnalysis(input$crossState, input$crossDataOne, 
-                   input$crossDataTwo)
+     CrossAnalysis(input$crossState, input$crossData)
   })
 })
