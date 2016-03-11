@@ -13,7 +13,6 @@ source('./scripts/BuildIncomeMap.R')
 source('./scripts/BuildLinearPlot.R')
 source('./scripts/BuildSummaryTable.R')
 source('./scripts/BuildHistogram.R')
-source('./scripts/PredictEducation.R')
 source('./scripts/TimeAnalysis.R')
 source('./scripts/CrossAnalysis.R')
 
@@ -38,11 +37,6 @@ shinyServer(function(input, output) {
   # output the NormLinPlot data
   output$linPlot <- renderPlotly({
     construct_linear(input$linearPlot)
-  })
-  
-  # output machine learning data
-  output$PredictEdu <- renderPlot({
-     PredictEducation()
   })
   
   # output the time analysis data

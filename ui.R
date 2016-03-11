@@ -605,17 +605,14 @@ shinyUI(navbarPage(
       titlePanel(tags$div(id = "TabSectionHeader",
                           'Education Prediction')),
       
-      tags$div(id = 'TabIntroBox',
-         mainPanel(plotOutput('PredictEdu')),
-      
-      tags$p(
-            tags$div(
-               id = 'GlobalMapIntro',
-               includeHTML('html/intros/PredictEducationWriteup.html')
-            )
+      tags$div(id = "TabIntroBox",
+         tags$p(
+               tags$div(
+                  id = 'GlobalMapIntro',
+                  includeHTML('html/intros/PredictEducationWriteup.html')
+               )
          )
       )
-      
    )
    
    # END TABS ==========================================================================================================
