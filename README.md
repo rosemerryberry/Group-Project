@@ -12,13 +12,7 @@ Each data set can be explored individually on the three map tabs. There you can 
 
 Data
 
-Each data set had values for at least every other year between 1992 and 2010. Education data was the most limiting, and that is why we chose that data set to predict, based on the 2012 values of the other data sets. There is a small blurb on each page about the source of each data set, but you can visit the pages for each data set here:
-
-Education:
-
-Crime:
-
-Income:
+Each data set had values for at least every other year between 1992 and 2010. Education data was the most limiting, and that is why we chose that data set to predict, based on the 2012 values of the other data sets. There is a small blurb on each page about the source of each data set.
 
 Limitations
 
@@ -32,6 +26,3 @@ Rosemary Adams, pizza curator
 Keagan Moo, biological consultant
 Brendan Kellogg, cereal expert
 Sean Martin, ethicist
-
-
-
