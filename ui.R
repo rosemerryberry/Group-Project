@@ -196,7 +196,7 @@ shinyUI(navbarPage(
                               'Alabama' = 'AL',
                               'Alaska' = 'AK',
                               'Arizona' = 'AZ',
-                              'Arkansas' = 'AK',
+                              'Arkansas' = 'AR',
                               'California' = 'CA',
                               'Colorado' = 'CO',
                               'Connecticut' = 'CT',
