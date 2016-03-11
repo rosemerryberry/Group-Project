@@ -4,6 +4,7 @@
 
 TimeAnalysis <- function(stateChoice = "WA", dataChoice = "Crime"){
   library(plotly)
+  library(dplyr)
   # State choice should be in code form but can inclued TOT for total. 
   
   # Get all years we will be doing the time analysis for. 
@@ -22,9 +23,9 @@ TimeAnalysis <- function(stateChoice = "WA", dataChoice = "Crime"){
     edufit <- lm(educationData[,2] ~ educationData[,1])
     incomefit <- lm(incomeData[,2] ~ incomeData[,1])
     
-    crimeName <- paste("Fit: m =", crimefit$coefficients[2])
-    eduName <- paste("Fit: m =", edufit$coefficients[2])
-    incomeName <- paste("Fit: m =", incomefit$coefficients[2])
+    crimeName <- paste("Fit: m =", round(crimefit$coefficients[2]), digits = 2)
+    eduName <- paste("Fit: m =", round(edufit$coefficients[2]), digits = 2)
+    incomeName <- paste("Fit: m =", round(incomefit$coefficients[2]), digits = 2)
     
     returnSet$crimeGraphic <- plot_ly(x = crimeData[,1], y = crimeData[,2], mode = "markers", name = "Crime Data", marker = list(color = "red")) %>% layout(xaxis = list(title = "Year"), yaxis = list(title = "Violent Crime Rate")) %>% add_trace(y = fitted(crimefit), mode = "line", name = crimeName, line = list(color = "black"), marker = list(color = "black"))
     returnSet$eduGraphic <- plot_ly(x = educationData[,1], y = educationData[,2], mode = "markers", name = "Education Data") %>% layout(xaxis = list(title = "Year"), yaxis = list(title = "Education Score")) %>% add_trace(y = fitted(edufit), mode = "line", name = eduName, line = list(color = "black"), marker = list(color = "black"))
@@ -42,9 +43,9 @@ TimeAnalysis <- function(stateChoice = "WA", dataChoice = "Crime"){
     incomedat <- rev(unlist(incomeData[1,2:length(incomeData[1,])]))
     incomefit <- lm(incomedat ~ yearsnum)
     
-    crimeName <- paste("Fit: m =", crimefit$coefficients[2])
-    eduName <- paste("Fit: m =", edufit$coefficients[2])
-    incomeName <- paste("Fit: m =", incomefit$coefficients[2])
+    crimeName <- paste("Fit: m =", round(crimefit$coefficients[2]), digits = 2)
+    eduName <- paste("Fit: m =", round(edufit$coefficients[2]), digits = 2)
+    incomeName <- paste("Fit: m =", round(incomefit$coefficients[2]), digits = 2)
     
     returnSet$crimeGraphic <- plot_ly(x = yearsnum, y = crimeData[,2], mode = "markers", name = "Crime Data", marker = list(color = "red")) %>% layout(xaxis = list(title = "Year"), yaxis = list(title = "Violent Crime Rate")) %>% add_trace(y = fitted(crimefit), mode = "line", name = crimeName, line = list(color = "black"), marker = list(color = "black"))
     returnSet$eduGraphic <- plot_ly(x = yearsnum, y = edudat, mode = "markers", name = "Education Data") %>% layout(xaxis = list(title = "Year"), yaxis = list(title = "Education Score")) %>% add_trace(y = fitted(edufit), mode = "line", name = eduName, line = list(color = "black"), marker = list(color = "black"))
@@ -71,19 +72,5 @@ TimeAnalysis <- function(stateChoice = "WA", dataChoice = "Crime"){
     #returnSet$eduP <- summary(edufit)$coefficients[2,4]
     #returnSet$incomeCoeff <- incomefit$coefficients
     #returnSet$incomeP <- summary(incomefit)$coefficients[2,4]
-    
-  }
 
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
 }
