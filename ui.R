@@ -164,18 +164,28 @@ shinyUI(navbarPage(
       titlePanel(tags$div(id = "TabSectionHeader",
                           'Interactive Report')),
       
-      # Print the summary description, wrapped in the text box
+      # Print the report description, wrapped in the text box
       tags$div(id = 'TabIntroBox',
-         tags$p(
-            tags$div(
-               id = 'GlobalMapIntro',
-               includeHTML('html/intros/sumTableText.html')
-            )
-         )
+               tags$p(
+                  tags$div(
+                     id = 'GlobalMapIntro',
+                     includeHTML('html/intros/reportText.html')
+                  )
+               )
       ),
       
       titlePanel(tags$div(id = 'TabSectionHeader',
                           'At the State Level: The Extremes')),
+      
+      # Print the summary description, wrapped in the text box
+      tags$div(id = 'TabIntroBox',
+               tags$p(
+                  tags$div(
+                     id = 'GlobalMapIntro',
+                     includeHTML('html/intros/sumTableText.html')
+                  )
+               )
+      ),
       
       # render the summary table, centered horizontally
       fluidRow(
