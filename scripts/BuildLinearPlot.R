@@ -17,9 +17,9 @@ construct_linear <- function(years) {
   income <- filter(income, Year >= years[1],Year <= years[2])
   
   #normal data is used to show everything on the same scale
-  normalEdu <- edu$normalEdu
-  normalIncome <- income$normalIncome
-  "Normalized Data" <- crime$normalCrime
+  normalEdu <- edu$normalEdu %>% round(digits = 2)
+  normalIncome <- income$normalIncome %>% round(digits = 2)
+  "Normalized Data" <- crime$normalCrime %>% round(digits = 2)
   
   #build the plot
   p <- plot_ly(crime, x = Year, y = `Normalized Data`, name = "Violent Crime", 
