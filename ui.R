@@ -594,7 +594,7 @@ shinyUI(navbarPage(
                            'Crime' = 'Crime',
                            'Education' = 'Education',
                            'Income' = 'Income'
-                        )
+                        ), selected = 'Education'
             )
             
          ),
