@@ -263,7 +263,7 @@ shinyUI(navbarPage(
                            'West Virgina' = 'WV',
                            'Wisconsin' = 'WI',
                            'Wyoming' = 'WY'
-                        )
+                        ), selected = 'NM'
             ),
             
             # Define a drop-down style input with all 50 states for second state choice
@@ -319,7 +319,7 @@ shinyUI(navbarPage(
                            'West Virgina' = 'WV',
                            'Wisconsin' = 'WI',
                            'Wyoming' = 'WY'
-                        ), selected = 'AK'
+                        ), selected = 'WA'
             ),
             
             # Define a drop-down style input with all 50 states for third state choice
@@ -375,7 +375,7 @@ shinyUI(navbarPage(
                            'West Virgina' = 'WV',
                            'Wisconsin' = 'WI',
                            'Wyoming' = 'WY'
-                        ), selected = 'AZ'
+                        ), selected = 'NV'
             )
          ),
          mainPanel(plotlyOutput('histogram'))),
