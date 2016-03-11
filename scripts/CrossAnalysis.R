@@ -94,7 +94,7 @@ CrossAnalysis <- function(stateChoice, dataChoice1, dataChoice2){
     if (dataChoice1 == "Income" | dataChoice2 == "Income") {
       
       # In the possible end branches the data is also fit
-      data2 <- read.csv("./data/IncomeRebuild.csv") %>% filter(code == stateChoice) %>% select(-x2012, -X)
+      data2 <- read.csv("./data/IncomeData.csv") %>% filter(code == stateChoice) %>% select(-x2012, -X)
       data2 <- rev(unlist(data2[1,2:length(data2[1,])]))
       AnalysisFit <- lm(data1 ~ data2)
       xaxe <- "Median Income"

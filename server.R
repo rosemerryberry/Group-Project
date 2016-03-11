@@ -15,6 +15,7 @@ source('./scripts/BuildSummaryTable.R')
 source('./scripts/BuildHistogram.R')
 source('./scripts/PredictEducation.R')
 source('./scripts/TimeAnalysis.R')
+source('./scripts/CrossAnalysis.R')
 
 # Begin Shiny Server
 shinyServer(function(input, output) {
@@ -59,5 +60,11 @@ shinyServer(function(input, output) {
      BuildHistogram(input$histDataType, input$histYear, 
                     input$histStateOne, input$histStateTwo, 
                     input$histStateThree)
+  })
+  
+  # Outpuyt the Cross Analysis plot
+  output$crossAnalysis <- renderPlotly({
+     CrossAnalysis(input$crossState, input$crossDataOne, 
+                   input$crossDataTwo)
   })
 })

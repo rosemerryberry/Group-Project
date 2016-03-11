@@ -162,7 +162,7 @@ shinyUI(navbarPage(
       
       # UI SECTION FOR SUMMARY TABLE --------------------------------------
       titlePanel(tags$div(id = "TabSectionHeader",
-                          'Summary')),
+                          'Interactive Report')),
       
       # Print the summary description, wrapped in the text box
       tags$div(id = 'TabIntroBox',
@@ -174,6 +174,9 @@ shinyUI(navbarPage(
          )
       ),
       
+      titlePanel(tags$div(id = 'TabSectionHeader',
+                          'At the State Level: The Extremes')),
+      
       # render the summary table, centered horizontally
       fluidRow(
          column(12, align="center",
@@ -183,7 +186,7 @@ shinyUI(navbarPage(
       
       # UI SECTION FOR HISTOGRAM ---------------------------------------------
       titlePanel(tags$div(id = "TabSectionHeader",
-                          'Histogram Analysis')),
+                          'At the State Level: A Comparison Tool')),
       
       tags$div(id = 'TabIntroBox',
                tags$p(
@@ -384,7 +387,7 @@ shinyUI(navbarPage(
       
       # UI SECTION FOR LINEAR PLOT ------------------------------------
       titlePanel(tags$div(id = "TabSectionHeader",
-                          'Linear Plot')),
+                          'At the National Level: A High Level Comparison')),
       
       tags$div(id = 'TabIntroBox',
                tags$p(
@@ -410,7 +413,7 @@ shinyUI(navbarPage(
       
       # UI SPOT FOR TIME ANALYSIS GRAPH -----------------------------------
       titlePanel(tags$div(id = "TabSectionHeader",
-                          'Time Analysis')),
+                          'At the State or National Level: Statistical Trends')),
       
       tags$div(id = 'TabIntroBox',
                tags$p(
@@ -491,7 +494,104 @@ shinyUI(navbarPage(
                            )
                         )
             ),
-            mainPanel(plotlyOutput('timeAnalysis')))
+            mainPanel(plotlyOutput('timeAnalysis'))),
+      
+      # UI SECTION FOR Cross Analysis
+      titlePanel(tags$div(id = "TabSectionHeader",
+                          'At the Overall Data Level: CrossAnalysis')),
+      
+      tags$div(id = 'TabIntroBox',
+               tags$p(
+                  tags$div(
+                     id = 'GlobalMapIntro',
+                     includeHTML('html/intros/crossAnalysisText.html')
+                  )
+               )
+      ),
+      
+      sidebarLayout(
+         
+         sidebarPanel(
+            
+            # Define a drop-down style input with all 50 states
+            selectInput("crossState", label = h3("State"),
+                        choices = list(
+                           'Alabama' = 'AL',
+                           'Alaska' = 'AK',
+                           'Arizona' = 'AZ',
+                           'Arkansas' = 'AR',
+                           'California' = 'CA',
+                           'Colorado' = 'CO',
+                           'Connecticut' = 'CT',
+                           'Delaware' = 'DE',
+                           'Florida' = 'FL',
+                           'Georgia' = 'GA',
+                           'Hawaii' = 'HI',
+                           'Idaho' = 'ID',
+                           'Illinois' = 'IL',
+                           'Indiana' = 'IN',
+                           'Iowa' = 'IA',
+                           'Kansas' = 'KS',
+                           'Kentucky' = 'KY',
+                           'Louisiana' = 'LA',
+                           'Maine' = 'ME',
+                           'Maryland' = 'MD',
+                           'Massachusetts' = 'MA',
+                           'Michigan' = 'MI',
+                           'Minnesota' = 'MN',
+                           'Mississippi' = 'MS',
+                           'Missouri' = 'MO',
+                           'Montana' = 'MT',
+                           'Nebraska' = 'NE',
+                           'Nevada' = 'NV',
+                           'New Hampsire' = 'NH',
+                           'New Jersey' = 'NJ',
+                           'New Mexico' = 'NM',
+                           'New York' = 'NY',
+                           'North Carolina' = 'NC',
+                           'North Dakota' = 'ND',
+                           'Ohio' = 'OH',
+                           'Oklahoma' = 'OK',
+                           'Oregon' = 'OR',
+                           'Pennsylvania' = 'PA',
+                           'Rhode Island' = 'RI',
+                           'South Carolina' = 'SC',
+                           'South Dakota' = 'SD',
+                           'Tennessee' = 'TN',
+                           'Texas' = 'TX',
+                           'Utah' = 'UT',
+                           'Vermont' = 'VT',
+                           'Virginia' = 'VA',
+                           'Washington' = 'WA',
+                           'West Virgina' = 'WV',
+                           'Wisconsin' = 'WI',
+                           'Wyoming' = 'WY'
+                        )
+            ),
+            
+            # Define a drop-dwon style input with all three crime types for first data type
+            selectInput("crossDataOne", label = h3("Data"),
+                        choices = list(
+                           'Crime' = 'Crime',
+                           'Education' = 'Education',
+                           'Income' = 'Income'
+                        )
+            ),
+            
+            # Define a drop-dwon style input with all three crime types for second data type
+            selectInput("crossDataTwo", label = h3("Data"),
+                        choices = list(
+                           'Crime' = 'Crime',
+                           'Education' = 'Education',
+                           'Income' = 'Income'
+                        )
+            )
+            
+         ),
+         mainPanel(plotlyOutput('crossAnalysis')))
+      
+      
+      
    ),
    
    # PREDICTION TAB ==============================================================================================
